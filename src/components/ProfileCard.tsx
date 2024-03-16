@@ -9,7 +9,7 @@ export default function ProfileCard() {
         {/* Image */}
         <div className="w-fit h-fit">
           <img 
-            src="src/assets/img/profile1.jpg" 
+            src="https://media.licdn.com/dms/image/D4D03AQFLrF9-mfX7eg/profile-displayphoto-shrink_200_200/0/1700491276122?e=1715817600&v=beta&t=gUGA8TyK34MZ12fu_Rw2yQ2I3FLWcdiZhPde6lvmCEg" 
             alt="profile Image" 
             width={400}
             height={400}
