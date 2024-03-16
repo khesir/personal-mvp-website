@@ -9,7 +9,7 @@ export default class OctokitSingleton {
     if (!OctokitSingleton.instance) {
       // Create a new instance if it doesn't exist
       OctokitSingleton.instance = new Octokit({
-        auth: "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"
+        auth: process.env.Token
       });
     }
     return OctokitSingleton.instance;

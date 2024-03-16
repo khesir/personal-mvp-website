@@ -1,5 +1,4 @@
 import OctokitSingleton from "@/lib/octokit";
-import axios from "axios";
 
 
 const octokit = OctokitSingleton.getInstance();
