@@ -9,7 +9,8 @@ export async function getAllPublicRepo(){
     try {
         const response = await octokit.request('GET /user/repos?sort=created',{
             headers: {
-                'X-GitHub-Api-Version': '2022-11-28'
+                'X-GitHub-Api-Version': '2022-11-28',
+                Authorization: `token ${import.meta.env.VITE_TOKEN}`
               }
         })
         return response.data
@@ -21,8 +22,13 @@ export async function getAllPublicRepo(){
 export async function getRepoLanguages(name: string,) {
     try {
         const response = await octokit.request('GET /repos/{owner}/{repo}/languages', {
+            headers: {
+                'X-GitHub-Api-Version': '2022-11-28',
+                Authorization: `token ${import.meta.env.VITE_TOKEN}`
+            },
             owner: owner,
-            repo: name
+            repo: name,
+            
         });
 
         // Extract language names from the response

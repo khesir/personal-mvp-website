@@ -1,9 +1,6 @@
 import { Octokit } from "octokit";
 
 
-const githubToken = process.env.Token;
-
-
 export default class OctokitSingleton {
   private static instance: Octokit;
 
@@ -14,7 +11,7 @@ export default class OctokitSingleton {
     if (!OctokitSingleton.instance) {
       // Create a new instance if it doesn't exist
       OctokitSingleton.instance = new Octokit({
-        auth: githubToken
+        auth: import.meta.env.VITE_REACT_TOKEN // doesnt work
       });
     }
     return OctokitSingleton.instance;
