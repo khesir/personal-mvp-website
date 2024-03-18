@@ -3,7 +3,6 @@ import OctokitSingleton from "@/lib/octokit";
 
 const octokit = OctokitSingleton.getInstance();
 
-let owner = "khesir"
 
 export async function getAllPublicRepo(){
     try {
@@ -19,7 +18,7 @@ export async function getAllPublicRepo(){
     }
 }
 
-export async function getRepoLanguages(name: string,) {
+export async function getRepoLanguages(owner: string, name: string) {
     try {
         const response = await octokit.request('GET /repos/{owner}/{repo}/languages', {
             headers: {

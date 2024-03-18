@@ -11,7 +11,7 @@ type Props = {
 
 function SkillIcon({ children, title, description,skills }: Props) {
     return (
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-7 p-2 hover:border">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-7 p-2 hover:border rounded-lg">
             <div className='flex sm:justify-center sm:items-center'>
                 {children}
             </div>
@@ -22,7 +22,7 @@ function SkillIcon({ children, title, description,skills }: Props) {
                     {skills.map((d, i) => (
                         <div 
                             key={i}
-                            className=' px-5 bg-[#91ffff7e] rounded-2xl inline'
+                            className=' px-5 bg-[#91ffff7e] rounded-2xl inline hover:bg-slate-300 cursor-default'
                         >
                             <span className='text-[#91ffff] opacity-100 text-sm'>
                                 {d.name}

@@ -1,6 +1,7 @@
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { RiFilePaper2Line } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
 
 export default function ProfileCard() {
   return (
@@ -28,9 +29,9 @@ export default function ProfileCard() {
 
         {/* Link */}
         <div className="p-2 bg-[#2D6F7D] rounded-xl text-[#FFFFFF] w-full flex flex-row sm:flex-col justify-around gap-5 sm:w-auto">
-          <FaGithub size={40}/>
-          <FaLinkedin size={40}/>
-          <RiFilePaper2Line size={40}/>
+          <Link target="_blank" to={"https://github.com/khesir"}> <FaGithub size={40}/></Link>
+          <Link target="_blank" to={"https://www.linkedin.com/in/aj-tollo-bab562234/"}><FaLinkedin size={40}/></Link>
+          <Link target="_blank" to={"#"}><RiFilePaper2Line size={40}/></Link>
         </div>
         
       {/* Buttons */}

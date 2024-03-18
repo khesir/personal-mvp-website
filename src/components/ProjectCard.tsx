@@ -19,7 +19,8 @@ export default function ProjectCard({name,description,stargazers_count,svn_url} 
 
     const handleData = async () =>{
         try {
-            const data = await getRepoLanguages(name)
+            const splitUrl = svn_url.split('/');
+            const data = await getRepoLanguages(splitUrl[3],splitUrl[4])
             setlanguagesData(data as string[]) // Add type assertion here
         } catch (error) {
             console.log(error)
@@ -40,7 +41,7 @@ export default function ProjectCard({name,description,stargazers_count,svn_url} 
                 {languagesData.map((d,i) => (
                     <div 
                     key={i}
-                    className=' px-5 bg-[#91ffff7e] rounded-2xl inline'
+                    className=' px-5 bg-[#91ffff7e] rounded-2xl inline hover:bg-slate-300 cursor-default'
                 >
                     <span className='text-[#91ffff] opacity-100 text-sm'>
                         {d}
