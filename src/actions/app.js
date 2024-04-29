@@ -22,3 +22,9 @@ if ('serviceWorker' in navigator) {
       }
     });
   }
+
+const link = document.createElement('link');
+link.rel = 'serviceworker';
+link.href = '/service-worker.js';
+link.type = 'application/javascript';
+document.head.appendChild(link);
