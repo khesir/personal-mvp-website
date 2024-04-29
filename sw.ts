@@ -1,38 +1,49 @@
-import { warmStrategyCache } from 'workbox-recipes';
-import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
-import { registerRoute } from 'workbox-routing';
-import { CacheableResponsePlugin } from 'workbox-cacheable-response';
-import { ExpirationPlugin } from 'workbox-expiration';
+const CACHE_NAME = 'my-cache-v1';
+const urlsToCache = [
+  '/',
+  '/index.html',
+  '/styles/main.css',
+  '/scripts/main.js',
+];
 
-// Set up page cache
-const pageCache = new CacheFirst({
-  cacheName: 'page-cache',
-  plugins: [
-    new CacheableResponsePlugin({
-      statuses: [0, 200],
-    }),
-    new ExpirationPlugin({
-      maxAgeSeconds: 30 * 24 * 60 * 60,
-    }),
-  ],
+self.addEventListener('install', (event: any) => {
+  // Perform install steps
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
+  );
 });
 
-warmStrategyCache({
-  urls: ['/index.html', '/'],
-  strategy: pageCache,
+self.addEventListener('fetch', (event: any) => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+        // Clone the request
+        const fetchRequest = event.request.clone();
+
+        return fetch(fetchRequest)
+          .then(response => {
+            // Check if we received a valid response
+            if (!response || response.status !== 200 || response.type !== 'basic') {
+              return response;
+            }
+            // Clone the response
+            const responseToCache = response.clone();
+
+            caches.open(CACHE_NAME)
+              .then(cache => {
+                cache.put(event.request, responseToCache);
+              });
+
+            return response;
+          });
+      })
+  );
 });
-
-registerRoute(({ request }) => request.mode === 'navigate', pageCache);
-
-// Set up asset cache
-registerRoute(
-  ({ request }) => ['style', 'script', 'worker'].includes(request.destination),
-  new StaleWhileRevalidate({
-    cacheName: 'asset-cache',
-    plugins: [
-      new CacheableResponsePlugin({
-        statuses: [0, 200],
-      }),
-    ],
-  }),
-);
