@@ -4,7 +4,6 @@ import { BsGithub } from "react-icons/bs";
 
 import { Button } from "@/components/ui/Button";
 import { ArrowBigRightDashIcon, TriangleAlert } from "lucide-react";
-import { PiWarningDiamondFill } from "react-icons/pi";
 
 export default function CardPage() {
   
