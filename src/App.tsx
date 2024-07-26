@@ -1,26 +1,20 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import About from "./pages/About";
-import Project from "./pages/Project";
-import Experience from "./pages/Experience";
+import { BrowserRouter, Route, Routes as Router} from "react-router-dom";
+
+import {Layout} from '@/layout/layout'
+import CardPage from '@/pages/CardPage'
+
+// import About from "./pages/About";
+// import Project from "./pages/Project";
+// import Experience from "./pages/Experience";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        {/* About Page */}
-        <Route index element={<About/>}/>
-        
-        {/* About Page */}
-        <Route path="/about" element={<About/>}/>
-        
-        {/* Project Page */}
-        <Route path="/projects" element={<Project/>} />
-
-        {/* Project Description Page */}
-        <Route path="/projects/:id" element={<Project/>} />
-      
-        <Route path="/experience" element={<Experience/>}/>
-      </Routes>
+      <Router> 
+        <Route path="/" element={<Layout/>}>
+          <Route path='/' index element={<CardPage/>}/>
+        </Route>
+      </Router>
     </BrowserRouter>
   )
 }

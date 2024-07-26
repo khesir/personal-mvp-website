@@ -1,20 +1,12 @@
-import ProfileCard from "@/components/ProfileCard"
-import Navbar from "@/components/ui/Navbar"
+import { Outlet } from "react-router-dom"
 
-export function NormalLayout({
-    children
-} : Readonly<{
-    children: React.ReactNode
-}>) {
+
+export function Layout() {
     return (
-        // Insert Particles or BG
-        <div className="">
-            <div className="max-w-7xl min-h-fit mx-auto flex justify-center items-center">
-                <div className="flex flex-col items-center w-full sm:w-[780px]">
-                    <ProfileCard/>
-                    <Navbar/>
-                    {children}
-                </div>
+       
+        <div className="w-full h-screen bg-[#1A202C] m-0">
+            <div className="h-full flex justify-center items-center">
+                <Outlet/>
             </div>
         </div>
     )
