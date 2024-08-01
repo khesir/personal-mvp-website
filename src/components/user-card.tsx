@@ -19,7 +19,7 @@ const UserCard: React.FC<UserCardProps> = ({ more, isMoreClose }) => {
                 alt="profile"
             />
             <div>
-                <h1 className="font-medium text-xl">Khesir</h1>
+                <h1 className="font-medium text-xl">Aj Tollo</h1>
                 <h3 className="font-medium text-sm text-gray-500">Software Developer</h3>
             </div>
             <p className="text-sm leading-4">Software, Bot and Games developer by trade</p>

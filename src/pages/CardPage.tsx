@@ -37,7 +37,12 @@ export default function CardPage() {
                                         About <span className="text-blue-400">.</span>
                                     </h1>
                                     <div className="text-sm pt-3">
-                                    Lorem ipsum dolor sit amet. Ut odit illo ea dolor dolore et odio nihil. Ut corporis pariatur et omnis consequatur est nesciunt ipsa est quaerat explicabo.
+                                        <p>I currently do freelancing work mainly for web development and bots like twitch, discord and other bots. I'm currently seeking for bigger scale projects with a team.
+                                            <br/>
+                                            <br/>
+                                            In my freetime, I tinker with 3d character controllers like souls like movements and more, I also study graphics simulation for fun and play RPG games.
+                                        </p>
+
                                     </div>
                                 </div>
                                 {/* Recent Experience */}
