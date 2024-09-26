@@ -1,0 +1,58 @@
+.soft-nav::before {
+  content: '';
+  position: absolute;
+  top: 10px; /* Adjust according to your design */
+  left: -35px; /* Adjust according to your design */
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background: transparent;
+  box-shadow: 20px -20px 0 #ffff;
+}
+.custom-shadow {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3); /* Drop shadow */
+}
+.soft-nav::after {
+  content: '';
+  position: absolute;
+  bottom: -37px;
+  right: 12px;
+  width: 25px;
+  height: 30px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 20px -20px 0 #ffff;
+}
+
+.bottom-button::before {
+  content: '';
+  position: absolute;
+  top: -50px; /* Adjust according to your design */
+  left: 40px; /* Adjust according to your design */
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background: transparent;
+  box-shadow: -20px 20px 0 #ffff;
+}
+
+.bottom-button::after {
+  content: '';
+  position: absolute;
+  bottom: 40px;
+  right: -50px;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: -20px 20px 0 #ffff
+}
+
+.truncate-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /* Set the number of lines you want to display */
+  -webkit-line-clamp: 2; /* Change '3' to the desired number of lines */
+  line-clamp: 2; /* Change '3' to the desired number of lines */
+}
