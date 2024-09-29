@@ -24,7 +24,7 @@ export default function NavbarItems({
         <Tooltip>
           <TooltipTrigger>
           <div onClick={handleClick} className={`${isActive ? 'bg-blue-400' : ''} rounded-md px-2 py-2`}>
-            <NavIcon className="w-6 h-6" />
+            <NavIcon className="w-4 h-4" />
           </div>
           </TooltipTrigger>
           <TooltipContent>
