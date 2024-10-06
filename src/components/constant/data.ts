@@ -4,20 +4,24 @@ export const navdata = [
     {
         name: "Home",
         isActive: true,
-        icon:Home
+        icon:Home,
+        link: '/'
     },
     {
         name: "Guestbook",
         isActive: false,
-        icon:MessageSquare
+        icon:MessageSquare,
+        link: '/guestchat'
     },{
         name: "Projects",
         isActive: false,
-        icon:LayoutDashboardIcon
+        icon:LayoutDashboardIcon,
+        link: '/projects'
     },{
         name: "Blogs",
         isActive: false,
-        icon:Book
+        icon:Book,
+        link: '/blogs'
     },
 ]
 

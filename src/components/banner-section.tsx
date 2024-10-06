@@ -1,17 +1,16 @@
 import { Card } from "@/components/ui/card"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Background } from "../background";
+import { Background } from "./background";
 import { MailPlus } from "lucide-react";
-import NavbarItems from "../navbar-items";
-import { useNavStore } from "@/hooks/use-navbar-items";
+import NavbarItems from "./navbar-items";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-
+import { navdata } from "@/components/constant/data";
+import '../css/style.css'
 
 
 export function Banner() {
-    const { navdata } = useNavStore();
 
   return (
     <div className="relative w-full h-full">
@@ -23,8 +22,8 @@ export function Banner() {
                     <NavbarItems 
                         key={index} 
                         name={data.name} 
-                        isActive={data.isActive} 
-                        icon={data.icon}/>
+                        icon={data.icon}
+                        link={data.link}/>
                 ))
             }
         </div>
@@ -44,15 +43,15 @@ export function Banner() {
 
         <Dialog>
             <DialogTrigger>
-                <Card className="absolute w-2/3 h-[150px] flex flex-col items-start p-5 -bottom-5 -right-5 bg-white z-20 rounded-3xl custom-shadow overflow-hidden">
+                <Card className="absolute w-2/3 flex flex-col items-start p-5 -bottom-5 -right-5 bg-white z-20 rounded-3xl custom-shadow overflow-hidden">
                     <span className="font-semibold text-2xl">
-                        Khesir
+                        Khesir (Aj)
                     </span>
                     <span className="font-semibold text-lg">
-                        Full stack Developer 
+                        Software engineer
                     </span>
                     <span className="text-start font-normal text-sm text-gray-600 truncate-text ">
-                    Create and develop web apps using Type script and React, Svelte, and Next.js. Interested in computer graphics, software architecture, and technical arts.
+                        I like to work on computer graphics and study software architecture.
                     </span>  
                 </Card>
             </DialogTrigger>
@@ -70,7 +69,7 @@ export function Banner() {
                     </div>
                     <div className="col-span-2">
                         <span className="font-normal text-sm text-gray-600">
-                        Create and develop web apps using Type script and React, Svelte, and Next.js. Interested in computer graphics, software architecture, and technical arts.
+                            Create and develop web apps using Type script and React, Svelte, and Next.js. Interested in computer graphics, software architecture, and technical arts.
                         </span> 
                     </div> 
                     {/* Technology */}
