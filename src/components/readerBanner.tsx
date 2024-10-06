@@ -1,6 +1,6 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Background } from "./background";
-import { ArrowLeftCircle, ArrowLeftToLineIcon, MailPlus } from "lucide-react";
+import { ArrowLeftToLineIcon } from "lucide-react";
 import NavbarItems from "./navbar-items";
 
 import { navdata } from "@/components/constant/data";

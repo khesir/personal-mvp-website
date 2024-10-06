@@ -21,6 +21,7 @@ export function ReadPage() {
       try {
         const response = await axios.get(`https://personal-backend-psi.vercel.app/blogs/${id}`);
         setMarkdown(response.data.result.parent);
+        setImageUrl('')
       } catch (err) {
         console.error(err);
         setError('Failed to load content');
@@ -30,7 +31,7 @@ export function ReadPage() {
     };
 
     fetchData();
-  }, [id]);
+  }, [id, setImageUrl]);
 
   if (loading) {
     return <div>Loading...</div>;
