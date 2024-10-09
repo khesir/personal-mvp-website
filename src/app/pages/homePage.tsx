@@ -1,11 +1,19 @@
 "use client"
 
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { BlogList } from "../_components/blogList"
 import { ProjectList } from "../_components/projectsList"
+import { usePathname } from "@/hooks/use-pathname-store"
+import { useEffect } from "react"
 
 export default function Homepage() {
+    const {setPathname} = usePathname();
+    const location = useLocation();
+        
+    useEffect(() => {
+        setPathname(location.pathname);
+    }, [location.pathname, setPathname]);
     return (
         <div className="space-y-5">    
             <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4">
