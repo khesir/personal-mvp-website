@@ -34,7 +34,7 @@ export function BlogList () {
     <>
       {projects.map((d:any,i) => (
       <div className="flex justify-between items-center cursor-default" key={i}>
-        <a className="font-semibold text-lg hover:underline decoration-2 cursor-pointer" href={'/view/'+d.id}>
+        <a className="font-semibold text-lg hover:underline decoration-2 cursor-pointer" href={'/blogs/view/'+d.id}>
           {d.properties.Name.title[0].plain_text}
         </a>
         <p className="font-semibold text-sm">

@@ -1,14 +1,21 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 
 import '../../css/markdown.css'
 import { useCustomBanner } from '@/hooks/useCustomBanner';
+import { usePathname } from '@/hooks/use-pathname-store';
 
-export function ReadPage() {
+interface ReadpageProps {
+  name: string;
+}
+
+export function ReadPage({name}: ReadpageProps) {
   const { setImageUrl } = useCustomBanner();
+  const location = useLocation();
+  const {setPathname} = usePathname();
 
   const { id } = useParams();
   const [markdown, setMarkdown] = useState('');
@@ -16,10 +23,14 @@ export function ReadPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    setPathname(location.pathname);
+  }, [location.pathname, setPathname]); 
+
+  useEffect(() => {
     setLoading(true)
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://personal-backend-psi.vercel.app/blogs/${id}`);
+        const response = await axios.get(`https://personal-backend-psi.vercel.app/${name}/${id}`);
         setMarkdown(response.data.result.parent);
         setImageUrl('')
       } catch (err) {
@@ -31,7 +42,7 @@ export function ReadPage() {
     };
 
     fetchData();
-  }, [id, setImageUrl]);
+  }, [id, name, setImageUrl]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -42,7 +53,7 @@ export function ReadPage() {
   }
 
   return (
-    <div className='markdown-body'>
+    <div className='prose prose-gray'>
       <ReactMarkdown>{markdown}</ReactMarkdown>
     </div>
   );

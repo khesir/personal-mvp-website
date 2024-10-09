@@ -7,7 +7,6 @@ import { ProjectPage } from "./pages/projectPage";
 import Homepage from "./pages/homePage";
 import { ReadPage } from "./pages/readingPage";
 import { BaseLayout } from "@/components/layout/pagelayout";
-import { ReaderLayout } from "@/components/layout/readerLayout";
 
 export default function App() {
   return (
@@ -18,12 +17,10 @@ export default function App() {
             <Route path='/blogs' element={<BlogPage />}/>
             <Route path='/projects' element={<ProjectPage />}/>
             <Route path='/' index element={<Homepage />}/>
-          </Route>
-          <Route element={<ReaderLayout />}>
-            <Route path="/view/:id" element={<ReadPage />}/>
+            <Route path='/blogs/view/:id' element={<ReadPage name="blogs" />}/> 
+            <Route path='/projects/view/:id' element={<ReadPage name="projects" />}/> 
           </Route>
           <Route path="/sandbox" element={<SandBoxPage />}/>
-          
       </Router>
     </BrowserRouter>
   )
