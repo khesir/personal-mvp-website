@@ -7,7 +7,7 @@
   height: 30px;
   border-radius: 100%;
   background: transparent;
-  box-shadow: 20px -20px 0 #ffff;
+  box-shadow: 20px -20px 0 currentColor;
 }
 .custom-shadow {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3); /* Drop shadow */
@@ -21,7 +21,7 @@
   height: 30px;
   background: transparent;
   border-radius: 50%;
-  box-shadow: 20px -20px 0 #ffff;
+  box-shadow: 20px -20px 0 currentColor;
 }
 
 .bottom-button::before {
@@ -33,7 +33,7 @@
   height: 50px;
   border-radius: 100%;
   background: transparent;
-  box-shadow: -20px 20px 0 #ffff;
+  box-shadow: -20px 20px 0 currentColor;
 }
 
 .bottom-button::after {
@@ -45,7 +45,7 @@
   height: 50px;
   background: transparent;
   border-radius: 50%;
-  box-shadow: -20px 20px 0 #ffff
+  box-shadow: -20px 20px 0 currentColor;
 }
 
 .truncate-text {

@@ -13,7 +13,8 @@ export default function App() {
     <BrowserRouter>
       <Router> 
           <Route element={<BaseLayout/>}>
-            <Route path="/guestchat" element={<GuestchatPage />}/>
+            <Route path="/progress-report" element={<GuestchatPage />}/>
+            <Route path="/guest-book" element={<GuestchatPage />}/>
             <Route path='/blogs' element={<BlogPage />}/>
             <Route path='/projects' element={<ProjectPage />}/>
             <Route path='/' index element={<Homepage />}/>

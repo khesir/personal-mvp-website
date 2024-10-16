@@ -11,8 +11,7 @@ export function GuestchatPage() {
   }, [location.pathname, setPathname]); 
   return(
     <div className="space-y-5">
-      <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4">
-      <CardHeader >
+<Card className="overflow-hidden dark:bg-slate-800 dark:border-gray-700" x-chunk="dashboard-05-chunk-4">      <CardHeader >
       <CardTitle className="group flex items-center gap-2 text-lg">
         Currently Under development
       </CardTitle>
