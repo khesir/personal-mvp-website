@@ -41,7 +41,7 @@ export function ProgressList () {
             {dateParser(d.created_time)}
           </p>
         </div>
-      ))}``
+      ))}
   </div>
   )
 }
