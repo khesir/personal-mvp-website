@@ -8,8 +8,8 @@ Front end personal website
 - Tailwind
 
 ## Future updates
-- [ ] Working Backend
-- [ ] Working Markdown
-- [ ] Working Project section from the database
-- [ ] Working Blog section from the database
+- [x] Working Backend
+- [x] Working Markdown
+- [x] Working Project section from the database
+- [x] Working Blog section from the database
 - [ ] Working Chat system using github auth
