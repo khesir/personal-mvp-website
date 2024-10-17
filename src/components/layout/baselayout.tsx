@@ -13,8 +13,8 @@ export function Layout({children}: ContentLayoutProps) {
                 </div>
             </div>
             <footer className="flex justify-center my-10">
-                <div className="2xl:w-2/5 xl:w-3/5 lg:w-3/5 sm:w-4/5 w-10/12 flex justify-between items-center">
-                    <p className="text-gray-500 font-semibold text-sm p-3">
+                <div className=" flex flex-col sm:flex-row justify-between items-center">
+                    <p className="flex text-gray-500 font-semibold text-sm p-3">
                         Made with 💜 by khesir. Powered by Vercel
                     </p>
                     <div className="flex items-center gap-2">
