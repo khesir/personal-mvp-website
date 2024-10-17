@@ -1,28 +1,23 @@
-import { Book, BotIcon, Briefcase, HandshakeIcon, Home, LayoutDashboardIcon, MessageSquare } from "lucide-react"
+import { Book, BotIcon, Briefcase, HandshakeIcon } from "lucide-react"
 
 export const navdata = [
     {
         name: "Home",
         isActive: true,
-        icon:Home,
         link: '/'
-    },
-    {
-        name: "Guestbook",
-        isActive: false,
-        icon:MessageSquare,
-        link: '/guestchat'
     },{
         name: "Projects",
         isActive: false,
-        icon:LayoutDashboardIcon,
-        link: '/projects'
+        link: '/projects',
     },{
         name: "Blogs",
         isActive: false,
-        icon:Book,
         link: '/blogs'
-    },
+    },{
+        name: "Progress Reports",
+        isActive: false,
+        link: '/progress-report'
+    }
 ]
 
 export const cooking =[

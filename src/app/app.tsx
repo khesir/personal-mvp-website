@@ -7,18 +7,20 @@ import { ProjectPage } from "./pages/projectPage";
 import Homepage from "./pages/homePage";
 import { ReadPage } from "./pages/readingPage";
 import { BaseLayout } from "@/components/layout/pagelayout";
+import { ProgressPage } from "./pages/progress";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Router> 
           <Route element={<BaseLayout/>}>
-            <Route path="/guestchat" element={<GuestchatPage />}/>
+            <Route path="/progress-report" element={<ProgressPage />}/>
+            <Route path="/guest-book" element={<GuestchatPage />}/>
             <Route path='/blogs' element={<BlogPage />}/>
             <Route path='/projects' element={<ProjectPage />}/>
             <Route path='/' index element={<Homepage />}/>
-            <Route path='/blogs/view/:id' element={<ReadPage name="blogs" />}/> 
-            <Route path='/projects/view/:id' element={<ReadPage name="projects" />}/> 
+            <Route path='/blogs/view/:title' element={<ReadPage name="blogs" />}/> 
+            <Route path='/projects/view/:title' element={<ReadPage name="projects" />}/> 
           </Route>
           <Route path="/sandbox" element={<SandBoxPage />}/>
       </Router>

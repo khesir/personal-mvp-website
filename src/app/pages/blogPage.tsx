@@ -1,4 +1,3 @@
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { BlogList } from "../_components/blogList";
 import { usePathname } from "@/hooks/use-pathname-store";
 import { useLocation } from "react-router-dom";
@@ -11,17 +10,11 @@ export function BlogPage() {
     setPathname(location.pathname);
   }, [location.pathname, setPathname]); 
   return(
-    <div className="space-y-5">
-      <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4">
-      <CardHeader >
-      <CardTitle className="group flex items-center gap-2 text-xl">
-        Blogs
-      </CardTitle>
-      <CardDescription>
-        <BlogList />
-      </CardDescription>
-      </CardHeader>    
-    </Card>
+    <div className="space-y-5 dark:text-white">
+      <p className="font-semibold text-2xl mb-2">Blogs</p>
+      <div className="flex flex-col gap-5">
+          <BlogList />
+      </div>
     </div>
   )
 }
