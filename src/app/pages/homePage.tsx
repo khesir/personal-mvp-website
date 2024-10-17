@@ -9,7 +9,7 @@ import { useEffect } from "react"
 import { Accordion, AccordionContent, AccordionTrigger } from "@/components/ui/accordion"
 import { AccordionItem } from "@radix-ui/react-accordion"
 import { Button } from "@/components/ui/Button"
-import { Mail, Github, TwitterIcon, Linkedin } from "lucide-react"
+import { Github, TwitterIcon, Linkedin } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
 
 export default function Homepage() {
