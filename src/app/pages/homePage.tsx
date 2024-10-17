@@ -44,7 +44,7 @@ export default function Homepage() {
                                     <TwitterIcon className="w-6 h-6"/>
                                 </a>
                                 <a  href="https://drive.google.com/file/d/14WnpO-gRtd0Bs7f4NfR6w664q0YX-jPx/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                                    <Button>Resume</Button>
+                                    <Button>CV / Resume</Button>
                                 </a>
                                 
                             </div>    
@@ -112,21 +112,33 @@ In the future, I aspire to explore my interest in Computer Graphics programming,
                         </div>
                 </CardContent>
             </Card> 
-            <div className="dark:text-white">
+            <div className="dark:text-white flex flex-col gap-3">
                 <Link to={'/project'}>
                     <p className="font-semibold text-2xl mb-2">Recent Project</p>
                 </Link>
-                <Separator />
                <div className="flex flex-col gap-2">
                     <ProjectList />
+               </div>
+               <div className="flex flex-col items-end ">
+                    <Link to={'/project'} className="font-semibold text-lg py-3 hover:underline text-blue-600 dark:text-blue-400">
+                        See All Projects
+                    </Link>
+                    <Separator />
                </div>
             </div>
             <div className="dark:text-white">
                 <Link to={'/blog'}>
                     <p className="font-semibold text-2xl mb-2">Recent Blog</p>
                 </Link>
-                <Separator />
-                <BlogList />
+                <div className="flex flex-col gap-5">
+                    <BlogList />
+               </div>
+               <div className="flex flex-col items-end ">
+                    <Link to={'/blogs'} className="font-semibold text-lg py-3 hover:underline text-blue-600 dark:text-blue-400">
+                        See All Blogs
+                    </Link>
+                    <Separator />
+               </div>
             </div>
       </div>
     )

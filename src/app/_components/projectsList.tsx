@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/Button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { dateParser } from "@/lib/utils";
 import axios from "axios";
-import { Github, Rocket } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export function ProjectList () {
   const [projects, setProjects] = useState([]);
@@ -16,7 +15,7 @@ export function ProjectList () {
     const fetchData = async () => {
       setLoading(true)
       try {
-        const data = await axios.get('https://personal-backend-psi.vercel.app/projects/')
+        const data = await axios.get('https://personal-backend-psi.vercel.app/projects?pageSize=3')
         setProjects(data.data.result.results)
       } catch(e: any)  {
         setRes(e.toString())
@@ -33,32 +32,35 @@ export function ProjectList () {
   if (res) {
     return <div> {res} </div>
   }
+  if (projects.length === 0) {
+    return <div> No Data Available</div>
+  }
+  console.log(projects)
   return(
     <>
       {projects.map((d:any,i) => (
         <a href={'/projects/view/'+d.id}>
-          <Card className="relative overflow-hidden dark:bg-slate-800 dark:border-gray-700 cursor-pointer hover:bg-blue-100 dark:hover:bg-blue-400"  x-chunk="dashboard-05-chunk-4" key={i}>
+          <Card className="relative w-full h-[150px] overflow-hidden dark:bg-slate-800 dark:border-gray-700 cursor-pointer"  x-chunk="dashboard-05-chunk-4" key={i}>
             <div className="flex items-center justify-start h-full">
               <div className="w-[20%] h-full flex-shrink-0">
                   <img 
-                      src={'/img/profile1.jpg'}
+                      src={d.properties['Image'].files.length === 0 ? '/img/placeholder.jpg': d.properties['Image'].files[0].file.url}
                       className="w-full h-full object-top object-cover"
                   />
               </div>
             <CardHeader className="flex-grow">
-              <CardTitle className="font-semibold text-lg" >
-                
-                  {d.properties.Name.title[0].plain_text}
-                
+              <CardTitle className="font-semibold text-lg  hover:underline" >
+                  <Link to={'/projects/view/'+d.id} className="text-blue-600 dark:text-blue-400">
+                    {d.properties.Name.title[0].plain_text}
+                  </Link>
               </CardTitle>
               <CardDescription className="font-semibold text-sm">
                 <div className="flex gap-1">
-                  <Badge>test</Badge>
-                  <Badge>test</Badge>
-                  <Badge>test</Badge>
-                  <Badge>test</Badge>
+                  {d.properties['Multi-select']?.multi_select.map((data : any, index : any) => (
+                    <Badge key={index} variant={'outline'}>{data.name}</Badge>
+                  ))}
                 </div>
-                <p>{dateParser(d.created_time)}</p>
+                <p>{d.properties['Released Date']?.date?.start ? dateParser(d.properties['Released Date'].date.start) : 'In progress'}</p>
               </CardDescription>
             </CardHeader>
             </div>

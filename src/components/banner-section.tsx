@@ -1,18 +1,13 @@
 import { Background } from "./background";
 import '../css/style.css'
 import { usePathname } from "@/hooks/use-pathname-store";
-import { useNavigate } from "react-router-dom";
 import { AboutMeCard } from "./card/about-me-card";
 import { ModeToggle } from "./providers/mode-toggle";
 
 
 export function Banner() {
     const {pathname} = usePathname();
-    const navigate = useNavigate();
 
-    const handleBack = () => {
-        navigate('/');
-    };
     return (
         <div className="relative w-full h-full">
 
@@ -25,6 +20,7 @@ export function Banner() {
                     <div className="absolute -bottom-10 -left-10 bg-current w-[150px] h-[150px] rounded-full z-10 bottom-button dark:text-slate-800 text-white" />
                 </>
             )}
+            
 
             {/* About me */}
             {/* Project Card */}
