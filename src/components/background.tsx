@@ -14,12 +14,16 @@ export function Background({ size = 'h-[300px]' }: BackgroundProps) {
   const { imageUrl, setImageUrl } = useCustomBanner();
 
   useEffect(() => {
-    if (!pathname.startsWith('/view')) {
-      setImageUrl('/img/banner3.jpg');
-    } else if (pathname.startsWith('/view') && imageUrl === '') {
-      setImageUrl('/img/banner2.jpeg');
+    // Check if the pathname does NOT start with any of the specified paths
+    if (!(
+      pathname.startsWith('/view/blogs') ||
+      pathname.startsWith('/view/projects') ||
+      pathname.startsWith('/view/progress')
+    )) {
+      setImageUrl('/img/banner3.jpg'); // Set the default image if no valid path
     }
-  }, [pathname, setImageUrl, imageUrl]);
+    // This ensures the default image is set only if the current pathname is not in the specified paths.
+  }, [pathname, setImageUrl]);
 
   return (
     <motion.div

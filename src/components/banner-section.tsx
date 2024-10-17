@@ -20,7 +20,11 @@ export function Banner() {
                     <div className="absolute -bottom-10 -left-10 bg-current w-[150px] h-[150px] rounded-full z-10 bottom-button dark:text-slate-800 text-white" />
                 </>
             )}
-            
+            {pathname !== '/' && (
+                <div className="absolute -top-5 -right-5 bg-blue-400 flex justify-center items-center w-[65px] h-[65px] rounded-full z-20 cursor-pointer">
+                    <ModeToggle />
+                </div>
+            )}
 
             {/* About me */}
             {/* Project Card */}

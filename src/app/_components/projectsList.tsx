@@ -35,11 +35,11 @@ export function ProjectList () {
   if (projects.length === 0) {
     return <div> No Data Available</div>
   }
-  console.log(projects)
+  console.log('wah')
   return(
-    <>
+    <div className="flex flex-col gap-5">
       {projects.map((d:any,i) => (
-        <a href={'/projects/view/'+d.id}>
+        <a href={`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`}>
           <Card className="relative w-full h-[150px] overflow-hidden dark:bg-slate-800 dark:border-gray-700 cursor-pointer"  x-chunk="dashboard-05-chunk-4" key={i}>
             <div className="flex items-center justify-start h-full">
               <div className="w-[20%] h-full flex-shrink-0">
@@ -50,7 +50,7 @@ export function ProjectList () {
               </div>
             <CardHeader className="flex-grow">
               <CardTitle className="font-semibold text-lg  hover:underline" >
-                  <Link to={'/projects/view/'+d.id} className="text-blue-600 dark:text-blue-400">
+                  <Link to={`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`} className="text-blue-600 dark:text-blue-400">
                     {d.properties.Name.title[0].plain_text}
                   </Link>
               </CardTitle>
@@ -60,7 +60,7 @@ export function ProjectList () {
                     <Badge key={index} variant={'outline'}>{data.name}</Badge>
                   ))}
                 </div>
-                <p>{d.properties['Released Date']?.date?.start ? dateParser(d.properties['Released Date'].date.start) : 'In progress'}</p>
+                <p className="font-semibold text-sm text-slate-500 dark:text-slate-400">{d.properties['Released Date']?.date?.start ? dateParser(d.properties['Released Date'].date.start) : 'In progress'}</p>
               </CardDescription>
             </CardHeader>
             </div>
@@ -72,6 +72,6 @@ export function ProjectList () {
       </a>
 
     ))}
-    </>
+    </div>
   )
 }

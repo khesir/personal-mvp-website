@@ -1,9 +1,9 @@
-import { ProjectList } from "../_components/projectsList";
-import { useLocation } from "react-router-dom";
 import { usePathname } from "@/hooks/use-pathname-store";
+import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { ProgressList } from "../_components/progressList";
 
-export function ProjectPage() {
+export function ProgressPage() {
   const {setPathname} = usePathname();
   const location = useLocation();
   useEffect(() => {
@@ -11,11 +11,8 @@ export function ProjectPage() {
   }, [location.pathname, setPathname]); 
   return(
     <div className="space-y-5 dark:text-white">
-      <p className="font-semibold text-2xl mb-2">
-        Projects
-      </p>
-      <ProjectList />
-
+        <p className="font-semibold text-2xl mb-2">Progress report</p>
+        <ProgressList />
     </div>
   )
 }

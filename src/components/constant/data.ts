@@ -5,19 +5,18 @@ export const navdata = [
         name: "Home",
         isActive: true,
         link: '/'
-    },
-    {
-        name: "Progress Reports",
+    },{
+        name: "Projects",
         isActive: false,
-        link: '/progress-report'
+        link: '/projects',
     },{
         name: "Blogs",
         isActive: false,
         link: '/blogs'
     },{
-        name: "Guest Book",
+        name: "Progress Reports",
         isActive: false,
-        link: '/guest-book',
+        link: '/progress-report'
     }
 ]
 
