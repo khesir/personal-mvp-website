@@ -43,7 +43,7 @@ export default function Homepage() {
                                 <a href="https://x.com/khesirr" target="_blank" className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md">
                                     <TwitterIcon className="w-6 h-6"/>
                                 </a>
-                                <a  href="https://drive.google.com/file/d/14WnpO-gRtd0Bs7f4NfR6w664q0YX-jPx/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                                <a  href="https://drive.google.com/file/d/12xX3AlgSTGDO7RLvOTI3B6HyzzG-ZqCJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                                     <Button>CV / Resume</Button>
                                 </a>
                                 
