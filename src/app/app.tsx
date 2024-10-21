@@ -21,6 +21,7 @@ export default function App() {
             <Route path='/' index element={<Homepage />}/>
             <Route path='/blogs/view/:title' element={<ReadPage name="blogs" />}/> 
             <Route path='/projects/view/:title' element={<ReadPage name="projects" />}/> 
+            <Route path='/progress/view/:title' element={<ReadPage name="progress" />}/> 
           </Route>
           <Route path="/sandbox" element={<SandBoxPage />}/>
       </Router>

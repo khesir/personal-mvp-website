@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import { dateParser } from "@/lib/utils";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -27,7 +28,13 @@ export function ProjectList () {
     fetchData();
   },[])
   if (loading) {
-    return <div> Fetching data </div>
+    return (
+      <div className='flex flex-col gap-5'>
+      {Array.from({ length: 5 }, (_, index) => (
+        <Skeleton key={index} className="h-[150px] w-full dark:bg-slate-700" />
+      ))}
+    </div>
+    )
   }
   if (res) {
     return <div> {res} </div>
