@@ -13,6 +13,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  
   define: {
     'process.env.VITE_TOKEN' : JSON.stringify(process.env.VITE_TOKEN)
   },

@@ -13,6 +13,7 @@ import { dateParser } from '@/lib/utils';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Helmet } from 'react-helmet-async';
 
 interface ReadpageProps {
   name: string;
@@ -58,7 +59,6 @@ export function ReadPage({name}: ReadpageProps) {
 
   if (!data || !markdown || loading) {
     const skeletons = generateRandomSkeletons(10); // Change the count to your desired number of skeletons
-    console.log(skeletons)
     return (
       <div className='flex flex-col gap-3'>
         <Skeleton className="h-6 w-[400px] dark:bg-slate-700" />
@@ -81,6 +81,12 @@ export function ReadPage({name}: ReadpageProps) {
   }
   
   return (
+    <>
+      <Helmet>
+          <title>Khesir | {data?.properties?.Name?.title[0].plain_text ?? 'Not Found'}</title>
+          <meta name="description" content={data?.properties?.Description?.rich_text[0].plain_text ?? 'Not found'} />
+          <link rel="canonical" href="/view"/>
+      </Helmet>
     <div>
       <div className='flex flex-col gap-3'>
         <Breadcrumbs />
@@ -122,6 +128,7 @@ export function ReadPage({name}: ReadpageProps) {
         </ReactMarkdown>
       </div>
     </div>
+    </>
   );
 }
 const isVideoLink = (url: string | string[] | undefined) => {
