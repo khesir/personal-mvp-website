@@ -105,7 +105,7 @@ export function ReadPage({name}: ReadpageProps) {
           components={{
             a: ({ href, children }) => {
               // Check if the link text is 'video' and the link is a video URL
-              if (Array.isArray(children) && children[0] === 'video' && isVideoLink(href)) {
+              if (isVideoLink(href)) {
                 return href ? <VideoComponent src={href} /> : null;
               }
               // Otherwise, return a normal link
@@ -136,12 +136,14 @@ const isVideoLink = (url: string | string[] | undefined) => {
 };
 
 const VideoComponent = ({ src }: { src: string }) => {
+  const videoId = getId(src)
+  
   return (
     <div className="video-container">
       <iframe
         width="100%"
         height="315"
-        src={src}
+        src={`//www.youtube.com/embed/${videoId}`}
         title="Video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -150,7 +152,14 @@ const VideoComponent = ({ src }: { src: string }) => {
     </div>
   );
 };
+function getId(url) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
 
+  return (match && match[2].length === 11)
+    ? match[2]
+    : null;
+}
 const TwitterEmbed = ({ tweetId }: { tweetId: string }) => {
   useEffect(() => {
     // Load Twitter's embed script
