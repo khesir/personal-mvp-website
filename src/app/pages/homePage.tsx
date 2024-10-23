@@ -33,7 +33,7 @@ export default function Homepage() {
                         <div className="flex justify-between flex-col sm:flex-row gap-3">
                             <div>
                                 <CardTitle className="group flex items-center gap-1 text-xl cursor-pointer">
-                                    Welcome! Yo I'm Khesir
+                                    Welcome! I'm Khesir
                                 </CardTitle>
                                 <CardDescription>
                                     Software Engineer currently focusing (Fullstack Development)
@@ -59,25 +59,24 @@ export default function Homepage() {
                         </div>
                     </CardHeader>    
                     <CardContent>
-                        <div className="flex flex-col md:flex-row gap-5">
+                        <div className="flex flex-col md:flex-row gap-5 mb-5">
                             {/* Profile Picture */}
-                            <div className="w-full md:w-[50%] h-[300px] overflow-hidden rounded-3xl border md:order-1">
+                            <div className="w-full flex justify-end md:w-[40%] h-[300px] overflow-hidden rounded-3xl border md:order-1">
                                 <img 
-                                    src={'/img/profile1.jpg'}
-                                    className="w-full h-full object-top object-cover pointer-events-none"
+                                    src={'/img/Mee.png'}
+                                    className="w-full h-full object-cover pointer-events-none"
                                 />
                             </div>
                             {/* Who I am */}
-                            <div className="w-full md:w-[50%] mb-5">
+                            <div className="w-full md:w-[60%] mb-5">
                                 <h1 className="font-semibold text-lg">Who I am?</h1>
                                 <div>
-                            My name is AJ you can view my cv for that. I'm a passionate programmer who enjoys making software architecture and systems. Making ideas into reality is what I'm craving for life.
+                                I'm AJ—a passionate programmer who thrives on designing software architecture and systems. Turning ideas into reality is what drives me.                                <br />
+                                <br />
+                                I created this website for three main purposes: to serve as my CV, to write blog posts, and to document my journey as a programmer.
                                 <br />
                                 <br />
-                                I created this website for 3 purpose, act as my cv, writing blog post, and documenting my journey as to being a programmer.
-                                <br />
-                                <br />
-                                Wanna exchange ideas? reach out to my <a href="https://x.com/khesirr" className=" inline text-blue-400 underline decoration-blue-400">Dm me @khesirr on x</a> or <a href='mailto:khesir.dev@gmail.com' className="inline  text-blue-400 underline decoration-blue-400">email me </a>
+                                Want to exchange ideas? Feel free to reach out to me via DM on X <a href="https://x.com/khesirr" className=" inline text-blue-400 underline decoration-blue-400">@khesirr</a> or <a href='mailto:khesir.dev@gmail.com' className="inline  text-blue-400 underline decoration-blue-400">email me </a>
                                 </div>
                             </div>
                         </div>
@@ -150,13 +149,13 @@ export default function Homepage() {
                 </Card> 
                 <div className="dark:text-white flex flex-col gap-3">
                     <Link to={'/project'}>
-                        <p className="font-semibold text-2xl mb-2">Recent Project</p>
+                        <p className="font-semibold text-2xl mb-2">Top Project</p>
                     </Link>
                 <div className="flex flex-col gap-2">
                         <ProjectList />
                 </div>
                 <div className="flex flex-col items-end ">
-                        <Link to={'/project'} className="font-semibold text-lg py-3 hover:underline text-blue-600 dark:text-blue-400">
+                        <Link to={'/project'} className="font-semibold text-md py-3 hover:underline text-blue-600 dark:text-blue-400">
                             See All Projects
                         </Link>
                         <Separator />
@@ -170,7 +169,7 @@ export default function Homepage() {
                         <BlogList />
                 </div>
                 <div className="flex flex-col items-end ">
-                        <Link to={'/blogs'} className="font-semibold text-lg py-3 hover:underline text-blue-600 dark:text-blue-400">
+                        <Link to={'/blogs'} className="font-semibold text-md py-3 hover:underline text-blue-600 dark:text-blue-400">
                             See All Blogs
                         </Link>
                         <Separator />

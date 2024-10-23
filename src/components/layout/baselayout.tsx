@@ -6,7 +6,7 @@ interface ContentLayoutProps {
 }
 export function Layout({children}: ContentLayoutProps) {
     return (
-        <div className="min-h-screen flex flex-col dark:bg-slate-800">
+        <div className="min-h-screen flex flex-col dark:bg-slate-800 ">
             <div className="flex-grow">
                 <div className="h-full flex justify-center pt-10">
                     {children}

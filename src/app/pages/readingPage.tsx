@@ -14,6 +14,7 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Helmet } from 'react-helmet-async';
+import { Tweet } from 'react-twitter-widgets'
 
 interface ReadpageProps {
   name: string;
@@ -97,7 +98,7 @@ export function ReadPage({name}: ReadpageProps) {
           <span>Read Time: {data?.properties['Min']?.number ? data?.properties['Min']?.number : 'Not set'} mins</span>
         </div>
       </div>
-      <div className='prose prose-gray dark:prose-invert max-w-full flex flex-col'>
+      <div className='prose dark:prose-invert prose-gray max-w-full flex flex-col'>
         <ReactMarkdown 
           className='w-full' 
           rehypePlugins={[rehypeRaw]} // Enable raw HTML rendering
@@ -108,35 +109,57 @@ export function ReadPage({name}: ReadpageProps) {
               if (isVideoLink(href)) {
                 return href ? <VideoComponent src={href} /> : null;
               }
+              if (isTweetLink(href)) {
+                const tweetId = href ? getTweetId(href) : null;
+                return tweetId ? (<div className="w-full mx-auto"><Tweet tweetId={tweetId} /></div>) : null;
+              }
               // Otherwise, return a normal link
               return <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>;
-            },
-            blockquote: ({ node, ...props }) => {
-              const hasTwitterClass = node && Array.isArray(node.properties?.className) && node.properties?.className.includes('twitter-tweet');
-              const firstChild = node?.children[0];
-              const tweetId = firstChild && 'properties' in firstChild && typeof firstChild.properties?.href === 'string' && firstChild.properties.href.split('/status/')[1];
-
-              if (hasTwitterClass && tweetId) {
-                return <TwitterEmbed tweetId={tweetId} />;
-              }
-
-              return <blockquote {...props} />;
             },
           }}
         >
           {markdown}
         </ReactMarkdown>
       </div>
+
     </div>
     </>
   );
 }
+
+const isTweetLink = (url: string | string[] | undefined) => {
+  return typeof url === 'string' && url.includes('x.com/khesirr/status/');
+};
+
+const getTweetId = (url: string) => {
+  const tweetIdMatch = url.match(/status\/(\d+)/);
+  return tweetIdMatch ? tweetIdMatch[1] : null;
+};
+
 const isVideoLink = (url: string | string[] | undefined) => {
-  return url ? url.includes('youtube.com') || url.includes('vimeo.com') : false; // Add more video platforms if needed
+  const videoExtensions = /\.(mp4|m4p|webm|ogv|mov)(\?.*)?$/i;
+
+  return typeof url === 'string' && 
+         (url.includes('youtube.com') || 
+          url.includes('vimeo.com') || 
+          videoExtensions.test(url)); // Checks for video file extensions
 };
 
 const VideoComponent = ({ src }: { src: string }) => {
-  const videoId = getId(src)
+  // Check if the source is a video file
+  if (src.match(/\.(mp4|m4p|webm|ogv|mov)(\?.*)?$/i)) {
+    return (
+      <div className="video-container">
+        <video width="100%" height="315" controls>
+          <source src={src} type={`video/${src.split('.').pop()}`} />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    );
+  }
+
+  // Otherwise, assume it's a YouTube link
+  const videoId = getId(src);
   
   return (
     <div className="video-container">
@@ -160,26 +183,7 @@ function getId(url: string) {
     ? match[2]
     : null;
 }
-const TwitterEmbed = ({ tweetId }: { tweetId: string }) => {
-  useEffect(() => {
-    // Load Twitter's embed script
-    const script = document.createElement('script');
-    script.setAttribute('src', 'https://platform.twitter.com/widgets.js');
-    script.setAttribute('async', 'true');
-    document.body.appendChild(script);
 
-    return () => {
-      // Cleanup script when component unmounts
-      document.body.removeChild(script);
-    };
-  }, [tweetId]);
-
-  return (
-    <blockquote className="twitter-tweet">
-      <a href={`https://twitter.com/x/status/${tweetId}`}></a>
-    </blockquote>
-  );
-};
 const generateRandomSkeletons = (count: number) => {
   return Array.from({ length: count }, () => ({
     width: Math.floor(Math.random() * 600) + 100, // Random width between 100px and 700px
