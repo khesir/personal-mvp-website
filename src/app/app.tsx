@@ -8,6 +8,7 @@ import Homepage from "./pages/homePage";
 import { ReadPage } from "./pages/readingPage";
 import { BaseLayout } from "@/components/layout/pagelayout";
 import { ProgressPage } from "./pages/progress";
+import AboutMe from "./pages/aboutMe";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <Router> 
           <Route element={<BaseLayout/>}>
             <Route path="/progress-report" element={<ProgressPage />}/>
+            <Route path="/about" element={<AboutMe />} />
             <Route path="/guest-book" element={<GuestchatPage />}/>
             <Route path='/blogs' element={<BlogPage />}/>
             <Route path='/projects' element={<ProjectPage />}/>

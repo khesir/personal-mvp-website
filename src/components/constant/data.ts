@@ -6,20 +6,24 @@ export const navdata = [
         isActive: true,
         link: '/'
     },{
+        name: "About me",
+        isActive: true,
+        link: '/about'
+    },{
         name: "Projects",
         isActive: false,
         link: '/projects',
-    },{
-        name: "Blogs",
-        isActive: false,
-        link: '/blogs'
-    },{
-        name: "Progress Reports",
-        isActive: false,
-        link: '/progress-report'
     }
 ]
-
+// ,{
+//     name: "Blogs",
+//     isActive: false,
+//     link: '/blogs'
+// },{
+//     name: "Progress Reports",
+//     isActive: false,
+//     link: '/progress-report'
+// }
 export const cooking =[
     {
         title: "Ari-Connect Discord Bot Project",
