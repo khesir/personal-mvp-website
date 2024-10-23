@@ -152,7 +152,7 @@ const VideoComponent = ({ src }: { src: string }) => {
     </div>
   );
 };
-function getId(url) {
+function getId(url: string) {
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
   const match = url.match(regExp);
 
