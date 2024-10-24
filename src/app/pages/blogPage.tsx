@@ -13,7 +13,7 @@ export function BlogPage() {
   return(
     <>
       <Helmet>
-          <title>Khesir | Blogs</title>
+          <title>Aj | Blogs</title>
           <meta name="description" content="Blog post about personal interest niche tech and other interest that I have" />
           <link rel="canonical" href={`/blogs`}/>
       </Helmet>

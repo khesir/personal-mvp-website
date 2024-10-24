@@ -84,7 +84,7 @@ export function ReadPage({name}: ReadpageProps) {
   return (
     <>
       <Helmet>
-          <title>Khesir | {data?.properties?.Name?.title[0].plain_text ?? 'Not Found'}</title>
+          <title>Aj | {data?.properties?.Name?.title[0].plain_text ?? 'Not Found'}</title>
           <meta name="description" content={data?.properties?.Description?.rich_text[0].plain_text ?? 'Not found'} />
           <link rel="canonical" href="/view"/>
       </Helmet>
