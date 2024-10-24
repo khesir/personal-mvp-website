@@ -5,7 +5,6 @@ import { usePathname } from "@/hooks/use-pathname-store"
 import { useEffect } from "react"
 import { Button } from "@/components/ui/Button"
 import { Github, TwitterIcon, Linkedin } from "lucide-react"
-import { Separator } from "@/components/ui/separator"
 import { Helmet } from "react-helmet-async"
 import { TopProjects } from "../_components/topProjects"
 
@@ -31,7 +30,7 @@ export default function Homepage() {
                                     Welcome! I'm Aj Tollo
                                 </CardTitle>
                                 <CardDescription>
-                                    Software Engineer currently focusing (Fullstack Development)
+                                    Software Engineer currently focusing on Fullstack Development
                                 </CardDescription>
                             </div>
                             <div>
@@ -45,9 +44,9 @@ export default function Homepage() {
                                     <a href="https://x.com/khesirr" target="_blank" className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md">
                                         <TwitterIcon className="w-6 h-6"/>
                                     </a>
-                                    <a  href="https://drive.google.com/file/d/12xX3AlgSTGDO7RLvOTI3B6HyzzG-ZqCJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                                        <Button>CV / Resume</Button>
-                                    </a>
+                                    <Link to={'/about'}>
+                                        <Button>Learn more</Button>
+                                    </Link>
                                     
                                 </div>    
                             </div>    
@@ -55,16 +54,15 @@ export default function Homepage() {
                     </CardHeader>   
                 </Card>
             <div className="dark:text-white flex flex-col gap-3">
-                    <div className="flex items-center gap-3">
-                    <Link to={'/project'}>
-                        <p className="font-semibold text-2xl mb-2">Top 3 Project</p>
-                    </Link>
-                    <div className="flex flex-col items-end ">
-                        <Link to={'/project'} className="font-semibold text-md py-3 hover:underline text-blue-600 dark:text-blue-400/60">
-                            See All Projects
+            <div className="flex justify-between">
+            <Link to={'/project'}>
+                            <p className="font-semibold text-2xl mb-2">Top 3 Project</p>
                         </Link>
-                        <Separator />
-                    </div>
+                        <div className="flex flex-col items-end pt-2">
+                            <Link to={'/projects'} className="font-semibold text-md hover:underline text-blue-600 dark:text-blue-400/60">
+                                See more
+                            </Link>
+                        </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                         <TopProjects />
@@ -73,17 +71,18 @@ export default function Homepage() {
                 </div>
             <div className="space-y-5">
                 <div className="dark:text-white">
-                        <Link to={'/blog'}>
-                            <p className="font-semibold text-2xl mb-2">Recent Blog</p>
-                        </Link>
+                        <div className="flex justify-between">
+                            <Link to={'/blog'}>
+                                <p className="font-semibold text-2xl mb-2">Recent Blog</p>
+                            </Link>
+                            <div className="flex flex-col items-end pt-2">
+                                <Link to={'/blogs'} className="font-semibold text-md hover:underline text-blue-600 dark:text-blue-400/60">
+                                   See more
+                                </Link>
+                            </div>
+                        </div>
                         <div className="flex flex-col gap-5">
                             <BlogList />
-                    </div>
-                    <div className="flex flex-col items-end ">
-                            <Link to={'/blogs'} className="font-semibold text-md py-3 hover:underline text-blue-600 dark:text-blue-400">
-                                See All Blogs
-                            </Link>
-                            <Separator />
                     </div>
                 </div>
             </div>

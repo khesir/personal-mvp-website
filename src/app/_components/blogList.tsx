@@ -35,6 +35,13 @@ export function BlogList () {
   if (res) {
     return <div> {res} </div>
   }
+  if (projects.length === 0) {
+    return(
+      <div>
+        No available blogs
+      </div>
+    )
+  }
   return(
     <>
       {projects.map((d:any,i) => (

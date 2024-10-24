@@ -28,11 +28,11 @@ export function TopProjects () {
   },[])
   if (loading) {
     return (
-      <div className='flex gap-3'>
-      {Array.from({ length: 3 }, (_, index) => (
-        <Skeleton key={index} className="h-[350px] w-full dark:bg-slate-700" />
+      <>
+        {Array.from({ length: 3 }, (_, index) => (
+        <Skeleton key={index} className="h-[350px]  flex-1  dark:bg-slate-700" />
       ))}
-    </div>
+      </>
     )
   }
   if (res) {

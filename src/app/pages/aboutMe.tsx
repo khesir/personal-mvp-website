@@ -12,10 +12,10 @@ export default function AboutMe() {
         <div className="flex justify-between flex-col sm:flex-row gap-3">
             <div>
                 <CardTitle className="group flex items-center gap-1 text-xl cursor-pointer">
-                    Welcome! I'm Khesir
+                    Welcome! I'm Aj
                 </CardTitle>
                 <CardDescription>
-                    Software Engineer currently focusing (Fullstack Development)
+                    Software Engineer currently focusing on Fullstack Development
                 </CardDescription>
             </div>
             <div>
