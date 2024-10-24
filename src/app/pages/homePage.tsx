@@ -27,7 +27,7 @@ export default function Homepage() {
                         <div className="flex justify-between flex-col sm:flex-row gap-3">
                             <div>
                                 <CardTitle className="group flex items-center gap-1 text-xl cursor-pointer">
-                                    Welcome! I'm Aj Tollo
+                                    Welcome! I'm Aj
                                 </CardTitle>
                                 <CardDescription>
                                     Software Engineer currently focusing on Fullstack Development

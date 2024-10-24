@@ -53,6 +53,6 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   /* Set the number of lines you want to display */
-  -webkit-line-clamp: 2; /* Change '3' to the desired number of lines */
-  line-clamp: 2; /* Change '3' to the desired number of lines */
+  -webkit-line-clamp: 3; /* Change '3' to the desired number of lines */
+  line-clamp: 3; /* Change '3' to the desired number of lines */
 }

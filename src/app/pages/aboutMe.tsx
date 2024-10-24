@@ -41,7 +41,7 @@ export default function AboutMe() {
             {/* Profile Picture */}
             <div className="w-full flex justify-end md:w-[40%] h-[300px] overflow-hidden rounded-3xl border md:order-1">
                 <img 
-                    src={'/img/Mee.png'}
+                    src={'/img/profile2.jpg'}
                     className="w-full h-full object-cover pointer-events-none"
                 />
             </div>

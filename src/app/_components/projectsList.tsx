@@ -61,7 +61,7 @@ export function ProjectList () {
                     {d.properties.Name.title[0].plain_text}
                   </Link>
               </CardTitle>
-              <CardDescription className="font-semibold text-sm">
+              <CardDescription className="font-semibold text-sm border">
                 <div className="flex gap-1">
                   {d.properties['Languages']?.multi_select.map((data : any, index : any) => (
                     <Badge key={index} variant={'outline'}>{data.name}</Badge>
