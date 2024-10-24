@@ -13,13 +13,13 @@ export const navdata = [
         name: "Projects",
         isActive: false,
         link: '/projects',
+    },{
+        name: "Blogs",
+        isActive: false,
+        link: '/blogs'
     }
 ]
 // ,{
-//     name: "Blogs",
-//     isActive: false,
-//     link: '/blogs'
-// },{
 //     name: "Progress Reports",
 //     isActive: false,
 //     link: '/progress-report'
