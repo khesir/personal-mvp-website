@@ -1,22 +1,31 @@
-import { Book, BotIcon, Briefcase, HandshakeIcon } from "lucide-react"
+import { Book, BotIcon, Briefcase, HandshakeIcon, Home, Layers, PenLine } from "lucide-react"
 
 export const navdata = [
     {
         name: "Home",
         isActive: true,
-        link: '/'
+        link: '/',
+        emoji: Home,
     },{
-        name: "About me",
+        name: "About",
         isActive: true,
-        link: '/about'
+        link: '/about',
+        emoji: Home,
     },{
-        name: "Projects",
+        name: "Services",
+        isActive: false,
+        link: '/servies',
+        emoji: Layers,
+    },{
+        name: "Works",
         isActive: false,
         link: '/projects',
+        emoji: Briefcase,
     },{
         name: "Blogs",
         isActive: false,
-        link: '/blogs'
+        link: '/blogs',
+        emoji: PenLine,
     }
 ]
 // ,{

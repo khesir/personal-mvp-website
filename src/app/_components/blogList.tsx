@@ -3,12 +3,13 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { dateParser } from "@/lib/utils";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export function BlogList () {
   const [projects, setProjects] = useState([]);
   const [res, setRes] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  const location = useLocation()
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
@@ -46,10 +47,10 @@ export function BlogList () {
     <>
       {projects.map((d:any,i) => (
       <div className="flex flex-col cursor-default gap-2" key={i}>
-        <a className="font-semibold text-lg hover:underline decoration-2 cursor-pointer text-blue-600 dark:text-blue-400" href={`/blogs/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`}>
+        <a className={`font-semibold ${location.pathname === '/' ? 'text-sm' : 'text-lg'} hover:underline decoration-2 cursor-pointer text-blue-600 dark:text-blue-400`} href={`/blogs/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`}>
           {d.properties.Name.title[0].plain_text}
         </a>
-        <p className="font-semibold text-sm text-slate-500 dark:text-slate-400">{d.properties['Released Date']?.date?.start ? dateParser(d.properties['Released Date'].date.start) : 'In progress'}</p>
+        <p className="font-semibold text-xs text-slate-500 dark:text-slate-400">{d.properties['Released Date']?.date?.start ? dateParser(d.properties['Released Date'].date.start) : 'In progress'}</p>
       </div>
     ))}
     </>
