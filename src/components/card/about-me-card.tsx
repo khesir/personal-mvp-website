@@ -21,7 +21,9 @@ export function AboutMeCard() {
                         </CardTitle>
                         <CardDescription className="flex justify-start">
                           <Button variant={'default'}>🚀 Available for work</Button>
-                          <Button variant={'ghost'}>Say hello! here</Button>
+                          <a  href="https://drive.google.com/file/d/12xX3AlgSTGDO7RLvOTI3B6HyzzG-ZqCJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                              <Button variant={'ghost'}>Check cv/resume</Button>
+                          </a>
                         </CardDescription>
                     </CardHeader>   
                 </Card>

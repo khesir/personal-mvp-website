@@ -9,6 +9,7 @@ import { ReadPage } from "./pages/readingPage";
 import { BaseLayout } from "@/components/layout/pagelayout";
 import { ProgressPage } from "./pages/progress";
 import AboutMe from "./pages/aboutMe";
+import { ServicePage } from "./pages/servicePage";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
             <Route path='/blogs' element={<BlogPage />}/>
             <Route path='/projects' element={<ProjectPage />}/>
             <Route path='/' index element={<Homepage />}/>
+            <Route path='/services' element={<ServicePage />}/>
             <Route path='/blogs/view/:title' element={<ReadPage name="blogs" />}/> 
             <Route path='/projects/view/:title' element={<ReadPage name="projects" />}/> 
             <Route path='/progress/view/:title' element={<ReadPage name="progress" />}/> 

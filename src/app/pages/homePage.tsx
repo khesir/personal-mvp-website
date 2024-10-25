@@ -3,10 +3,13 @@ import { Link, useLocation } from "react-router-dom"
 import { BlogList } from "../_components/blogList"
 import { usePathname } from "@/hooks/use-pathname-store"
 import { useEffect } from "react"
-import { Button } from "@/components/ui/Button"
+
 import { Github, TwitterIcon, Linkedin, Mail } from "lucide-react"
 import { Helmet } from "react-helmet-async"
 import { TopProjects } from "../_components/topProjects"
+import { Separator } from "@/components/ui/separator"
+import { Experties, Services } from "@/components/constant/data"
+import { Button } from "@/components/ui/Button"
 
 export default function Homepage() {
     const {setPathname} = usePathname();
@@ -56,74 +59,89 @@ export default function Homepage() {
                                     <a href="https://x.com/khesirr" target="_blank" className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md">
                                         <Mail className="w-6 h-6" />
                                     </a>
-                                    <a  href="https://drive.google.com/file/d/12xX3AlgSTGDO7RLvOTI3B6HyzzG-ZqCJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                                        <Button>CV / Resume</Button>
-                                    </a>
-                                    
                                 </div>    
                             </div>  
                             </CardFooter>
                         </Card>
-                        <div className="space-y-5">
-                    <div className="dark:text-white">
-                        <div className="flex justify-between">
-                            <Link to={'/blog'}>
-                                <p className="font-semibold text-xl mb-2">Recent Blogs</p>
-                            </Link>
-                            <div className="flex flex-col items-end pt-2">
-                                <Link to={'/blogs'} className="font-semibold text-md hover:underline text-blue-600 dark:text-blue-400/60">
-                                   See more
+                    <div className="space-y-5">
+                        <div className="dark:text-white">
+                            <div className="flex justify-between">
+                                <Link to={'/blog'}>
+                                    <p className="font-semibold text-xl mb-2">Recent Blogs</p>
                                 </Link>
+                                <div className="flex flex-col items-end pt-2">
+                                    <Link to={'/blogs'} className="font-semibold text-md hover:underline text-blue-600 dark:text-blue-400/60">
+                                    See more
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
-                        <div className="flex flex-col gap-5">
-                            <BlogList />
+                            <div className="flex flex-col gap-5">
+                                <BlogList />
+                            </div>
                         </div>
                     </div>
                 </div>
-                    </div>
-                    <Card className="flex flex-col  col-span-2 p-5 w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700" x-chunk="dashboard-05-chunk-4">
+                    <div className="flex flex-col  col-span-2 px-5 w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700" x-chunk="dashboard-05-chunk-4">
                         <div className="flex justify-between">
-                        <Link to={'/works'}>
-                            <p className="font-semibold text-2xl mb-2">Top Project</p>
-                        </Link>
-                        <div className="flex flex-col items-end pt-2">
-                            <Link to={'/works'} className="font-semibold text-md hover:underline text-blue-600 dark:text-blue-400/60">
-                                See more
+                            <Link to={'/works'}>
+                                <p className="font-semibold text-2xl mb-2">Top Project</p>
                             </Link>
-                        </div>
+                            <div className="flex flex-col items-end pt-2">
+                                <Link to={'/works'} className="font-semibold text-md hover:underline text-blue-600 dark:text-blue-400/60">
+                                    See more
+                                </Link>
+                            </div>
                         </div>
                         <div className="flex flex-col">
                             <TopProjects />
                         </div>
-                    </Card>
+                    </div>
                 </div>
+                <Separator className="mb-5" />
                 <div className=" flex fle-col sm:flex-row gap-3">
-                    <Card className="w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700" x-chunk="dashboard-05-chunk-4">
-                        <CardHeader className="">
-                            <CardTitle className="group flex items-center gap-1 text-xl cursor-pointer">
-                                Work Experience
-                            </CardTitle>
-                        </CardHeader>    
+                    <div className="w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700">
+                        <p className="font-semibold text-xl mb-2">Work Experience</p>
+                        <div className="flex flex-col gap-2">
+                            <Card className="w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700" x-chunk="dashboard-05-chunk-4">
+                               <div className="flex flex-col p-3 gap-1">
+                                    <p className="text-sm font-semibold">SAMAHAN Systems Development · Full-time</p>
+                                    <p className="text-xs">Fullstack Developer</p>
+                                    <p className="text-xs text-gray-500">Jul 2024 - Present · 4 mos</p>
+                                    <p className="text-xs text-gray-500">Davao City · Onsite</p>
+                               </div>
+                            </Card>
+                            <Card className="w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700" x-chunk="dashboard-05-chunk-4">
+                               <div className="flex flex-col p-3 gap-1">
+                                    <p className="text-sm font-semibold">Freelancing</p>
+                                    <p className="text-xs">Fullstack Developer</p>
+                                    <p className="text-xs text-gray-500">Mark 2024 - Present · 8 mos</p>
+                               </div>
+                            </Card>
+                        </div>
 
-                        <CardContent className="flex flex-col gap-3">
-                            
-                        </CardContent>
+                    </div> 
+                    <Card className="w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700 h-[370px]" x-chunk="dashboard-05-chunk-4">
 
-                    </Card> 
-                    <Card className="w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700" x-chunk="dashboard-05-chunk-4">
+                                <CardHeader className="">
+                                    <CardTitle className="group flex items-center gap-1 text-xl cursor-pointer">
+                                        Expertise
+                                    </CardTitle>
+                                </CardHeader>    
 
-                        <CardHeader className="">
-                            <CardTitle className="group flex items-center gap-1 text-xl cursor-pointer">
-                                Expertise
-                            </CardTitle>
-                        </CardHeader>    
+                                <CardContent className="flex flex-wrap justify-center gap-5">
+                                    {Experties.map((data, index) => (
+                                        <div key={index} className="flex flex-col items-center">
+                                            <Card className="p-2">
+                                                <Button variant={'ghost'} size={'icon'} className="">
+                                                <data.emoji className="w-10 h-10"/>
+                                                </Button>
+                                            </Card>
+                                            <span className="text-xs font-semibold">{data.name}</span>
+                                        </div>
+                                    ))}
+                                </CardContent>
 
-                        <CardContent className="flex flex-col gap-3">
-                            
-                        </CardContent>
-
-                    </Card> 
+                            </Card> 
                 </div>
                 <Card className="w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700" x-chunk="dashboard-05-chunk-4">
 
@@ -133,8 +151,17 @@ export default function Homepage() {
                         </CardTitle>
                     </CardHeader>    
 
-                    <CardContent className="flex flex-col gap-3">
-                        
+                    <CardContent className="flex flex-wrap justify-center gap-5">
+                        {Services.map((data, index) => (
+                            <div key={index} className="flex flex-col items-center gap-3">
+                                <Card className="p-2">
+                                    <Button variant={'ghost'} size={'icon'} className="">
+                                    <data.emoji className="w-10 h-10"/>
+                                    </Button>
+                                </Card>
+                                <span className="text-xs font-semibold">{data.name}</span>
+                            </div>
+                        ))}
                     </CardContent>
 
                 </Card> 

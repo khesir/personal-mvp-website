@@ -1,4 +1,7 @@
-import { Book, BotIcon, Briefcase, HandshakeIcon, Home, Layers, PenLine } from "lucide-react"
+import { Book, Bot, BotIcon, Briefcase, HandshakeIcon, Home, Layers, LayoutIcon, PenLine, UserCircle } from "lucide-react"
+import { TbBrandCSharp, TbBrandTypescript,TbBrandPython, TbBrandNodejs, TbDeviceDesktopCode   } from "react-icons/tb";
+import { SiNestjs, SiDrizzle, SiNextdotjs,SiMysql, SiMongodb,SiDocker } from "react-icons/si";
+import { FaReact, FaGamepad  } from "react-icons/fa";
 
 export const navdata = [
     {
@@ -10,11 +13,11 @@ export const navdata = [
         name: "About",
         isActive: true,
         link: '/about',
-        emoji: Home,
+        emoji: UserCircle,
     },{
         name: "Services",
         isActive: false,
-        link: '/servies',
+        link: '/services',
         emoji: Layers,
     },{
         name: "Works",
@@ -28,71 +31,56 @@ export const navdata = [
         emoji: PenLine,
     }
 ]
-// ,{
-//     name: "Progress Reports",
-//     isActive: false,
-//     link: '/progress-report'
-// }
-export const cooking =[
-    {
-        title: "Ari-Connect Discord Bot Project",
-        status: "Active",
-        description: "",
-        languages: ["Discord.py","Python", "Mysql", "Mongo", "Next.js"],
-        link: "https://ariconnect.vercel.app/",
-        
-        emoji: BotIcon,
-    },
-    {
-        title: "Fullstack - SAMAHAN Sysdev",
-        status: "Full-time",
-        description: "",
-        languages: ["Next.js", "Nest.js", "Github"],
-        link: "",
 
-        emoji: Briefcase,
-    },
+export const Experties = [ 
     {
-        title: "Study - 3d Character Controllers",
-        status: "Active",
-        description: "In my free time I study game 3d controllers such as movements, states, camera and all",
-        languages: ["Godot","Game Development"],
-        link: "",
-
-        emoji: Book,
-    },
-    {
-        title: "Freelance - Web, Bots, and Game",
-        status: "Active",
-        description: "I'm accepting comissions on small projects like a portfolio, bots with few features and games.",
-        languages: [],
-        link: "",
-
-        emoji: HandshakeIcon,
+        name: 'React',
+        emoji: FaReact,
+    },{
+        name: 'C#',
+        emoji: TbBrandCSharp,
+    },{
+        name: 'Typescript',
+        emoji: TbBrandTypescript,
+    },{
+        name: 'Python',
+        emoji: TbBrandPython,
+    },{
+        name: 'Node.js',
+        emoji: TbBrandNodejs,
+    },{
+        name: 'Nest.js',
+        emoji: SiNestjs,
+    },{
+        name: 'Drizzle ORM',
+        emoji: SiDrizzle,
+    },{
+        name: 'Next.js',
+        emoji: SiNextdotjs,
+    },{
+        name: 'Mysql',
+        emoji: SiMysql,
+    },{
+        name: 'MongoDB',
+        emoji: SiMongodb,
+    },{
+        name: 'Docker',
+        emoji: SiDocker,
     }
 ]
 
-export const skills = {
-    prefLang: [
-        "Javascript",
-        "Typescript",
-        "Python",
-        "C++",
-        "C++",
-        "C++",
-        "C++",
-    ],
-    frameworks: [
-        "React",
-        "Next.js",
-        "Electron.js",
-        "Vite",
-        "Node.js"
-    ],
-    tools: [
-        "Git",
-        "MongoDB",
-        "Mysql",
-        "Docker",
-    ]
-}
+export const Services = [
+    {
+        name:'Bot Development',
+        emoji: Bot
+    },{
+        name:'Web Development',
+        emoji: TbDeviceDesktopCode 
+    },{
+        name:'Web Design',
+        emoji: LayoutIcon,
+    },{
+        name:'Game Development',
+        emoji: FaGamepad 
+    },
+]

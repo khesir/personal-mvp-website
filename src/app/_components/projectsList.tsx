@@ -5,12 +5,13 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { dateParser } from "@/lib/utils";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export function ProjectList () {
   const [projects, setProjects] = useState([]);
   const [res, setRes] = useState(null);
   const [loading, setLoading] = useState(false);
+  const location = useLocation()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,7 +58,7 @@ export function ProjectList () {
               </div>
             <CardHeader className="flex-grow">
               <CardTitle className="font-semibold text-lg  hover:underline" >
-                  <Link to={`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`} className="text-blue-600 dark:text-blue-400">
+                  <Link to={`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`} className={`text-blue-600 dark:text-blue-400 ${location.pathname === '/' ? 'text-sm' : 'text-lg'}`}>
                     {d.properties.Name.title[0].plain_text}
                   </Link>
               </CardTitle>
