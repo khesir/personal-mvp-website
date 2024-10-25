@@ -1,4 +1,4 @@
-import { Book, Bot, BotIcon, Briefcase, HandshakeIcon, Home, Layers, LayoutIcon, PenLine, UserCircle } from "lucide-react"
+import { Bot, Briefcase, Home, Layers, LayoutIcon, PenLine, UserCircle } from "lucide-react"
 import { TbBrandCSharp, TbBrandTypescript,TbBrandPython, TbBrandNodejs, TbDeviceDesktopCode   } from "react-icons/tb";
 import { SiNestjs, SiDrizzle, SiNextdotjs,SiMysql, SiMongodb,SiDocker } from "react-icons/si";
 import { FaReact, FaGamepad  } from "react-icons/fa";
