@@ -84,7 +84,7 @@ export function ReadPage({name}: ReadpageProps) {
   return (
     <>
       <Helmet>
-          <title>Aj | {data?.properties?.Name?.title[0].plain_text ?? 'Not Found'}</title>
+          <title>Khesir | {data?.properties?.Name?.title[0].plain_text ?? 'Not Found'}</title>
           <meta name="description" content={data?.properties?.Description?.rich_text[0].plain_text ?? 'Not found'} />
           <link rel="canonical" href="/view"/>
       </Helmet>
@@ -115,6 +115,22 @@ export function ReadPage({name}: ReadpageProps) {
               }
               // Otherwise, return a normal link
               return <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>;
+            },
+            img: ({ src, alt }) => {
+              return (
+                <div className='w-full h-[400px] overflow-hidden flex items-center justify-center'>
+                <img
+                  src={src}
+                  alt={alt}
+                  style={{
+                    maxWidth: '100%',    // Allow the image to be as wide as the container
+                    maxHeight: '100%',   // Allow the image to be as tall as the container
+                    objectFit: 'contain', // Maintain aspect ratio
+                  }} 
+                  className="rounded-lg shadow-md" // Additional styling
+                />
+              </div>
+              )
             },
           }}
         >

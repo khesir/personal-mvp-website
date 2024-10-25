@@ -13,7 +13,7 @@ export function ProjectPage() {
   return(
     <>
       <Helmet>
-          <title>Aj | Projects</title>
+          <title>Khesir | Projects</title>
           <meta name="description" content="A collection of projects that I have created or lead" />
           <link rel="canonical" href="/projects"/>
       </Helmet>

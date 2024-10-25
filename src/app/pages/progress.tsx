@@ -13,7 +13,7 @@ export function ProgressPage() {
   return(
     <>
       <Helmet>
-          <title>Aj | Progress-report</title>
+          <title>Khesir | Progress-report</title>
           <meta name="description" content="Welcome to my website" />
           <link rel="canonical" href="/progres"/>
       </Helmet>

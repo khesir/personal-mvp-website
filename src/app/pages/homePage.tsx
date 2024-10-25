@@ -21,7 +21,7 @@ export default function Homepage() {
     return (
         <>
             <Helmet>
-                <title>Aj | Home</title>
+                <title>Khesir | Home</title>
                 <meta name="description" content="Welcome to my website" />
                 <link rel="canonical" href="/"/>
             </Helmet>
@@ -41,7 +41,7 @@ export default function Homepage() {
                                     Tollo, Aj (Khesir)
                                 </CardTitle>
                                 <CardDescription>
-                                    A passionate developer with interest of graphics and softwares.
+                                    A Fullstack developer with interest of graphics and system architectures.
                                 </CardDescription>
                             </CardHeader>
                             <CardFooter>
@@ -118,7 +118,6 @@ export default function Homepage() {
                                </div>
                             </Card>
                         </div>
-
                     </div> 
                     <Card className="w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700 h-[370px]" x-chunk="dashboard-05-chunk-4">
 
