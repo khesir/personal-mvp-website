@@ -28,7 +28,7 @@ export function BlogList () {
   },[])
   if (loading) {
     return <div className='flex flex-col gap-5'>
-    {Array.from({ length: 5 }, (_, index) => (
+    {Array.from({ length: 1 }, (_, index) => (
       <Skeleton key={index} className="h-[50px] w-full dark:bg-slate-700" />
     ))}
   </div>

@@ -1,10 +1,18 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/Button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Linkedin, Github, TwitterIcon } from "lucide-react";
+import { Github, TwitterIcon, MailPlusIcon } from "lucide-react";
 import { ProgressList } from "../_components/progressList";
+import { usePathname } from "@/hooks/use-pathname-store";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function AboutMe() {
+    const {setPathname} = usePathname();
+    const location = useLocation();
+    useEffect(() => {
+        setPathname(location.pathname);
+    }, [location.pathname, setPathname]); 
   return (
     <>
       <Card className="overflow-hidden dark:bg-slate-800 dark:border-gray-700" x-chunk="dashboard-05-chunk-4">
@@ -12,7 +20,7 @@ export default function AboutMe() {
         <div className="flex justify-between flex-col sm:flex-row gap-3">
             <div>
                 <CardTitle className="group flex items-center gap-1 text-xl cursor-pointer">
-                    Welcome! I'm Aj
+                    Welcome! I'm Khesir
                 </CardTitle>
                 <CardDescription>
                     Software Engineer currently focusing on Fullstack Development
@@ -20,18 +28,16 @@ export default function AboutMe() {
             </div>
             <div>
                 <div className="flex items-center gap-2">
-                    <a href="https://www.linkedin.com/in/ajtollo/" target="_blank" className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md">
+                    {/* <a href="https://www.linkedin.com/in/ajtollo/" target="_blank" className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md">
                         <Linkedin className="w-6 h-6"/>
-                    </a>
+                    </a> */}
                     <a href="https://github.com/khesir" target="_blank" className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md">
                         <Github className="w-6 h-6"/>
                     </a>
                     <a href="https://x.com/khesirr" target="_blank" className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md">
                         <TwitterIcon className="w-6 h-6"/>
                     </a>
-                    <a  href="https://drive.google.com/file/d/12xX3AlgSTGDO7RLvOTI3B6HyzzG-ZqCJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <Button>CV / Resume</Button>
-                    </a>
+                    <Button><MailPlusIcon className="mr-3 h-4 w-4" /> Mail me</Button>
                 </div>    
             </div>    
         </div>
@@ -41,7 +47,7 @@ export default function AboutMe() {
             {/* Profile Picture */}
             <div className="w-full flex justify-end md:w-[40%] h-[300px] overflow-hidden rounded-3xl border md:order-1">
                 <img 
-                    src={'/img/profile2.jpg'}
+                    src={'/img/Mee.png'}
                     className="w-full h-full object-cover pointer-events-none"
                 />
             </div>
@@ -49,9 +55,9 @@ export default function AboutMe() {
             <div className="w-full md:w-[60%] mb-5">
                 <h1 className="font-semibold text-lg">Who I am?</h1>
                 <div>
-                I'm AJ—a passionate programmer who thrives on designing software architecture and systems. Turning ideas into reality is what drives me.                                <br />
+                I'm Khesir—a passionate programmer who thrives on designing software architecture and systems. Turning ideas into reality is what drives me.                                <br />
                 <br />
-                I created this website for three main purposes: to serve as my CV, to write blog posts, and to document my journey as a programmer.
+                My real passion is in Computer graphics and shaders, I like to create colorful effects using a particle systems and implementing algorithms to simulate behaviours, such as boids, water, dynamic interactions and procedural generations.
                 <br />
                 <br />
                 Want to exchange ideas? Feel free to reach out to me via DM on X <a href="https://x.com/khesirr" className=" inline text-blue-400 underline decoration-blue-400">@khesirr</a> or <a href='mailto:khesir.dev@gmail.com' className="inline  text-blue-400 underline decoration-blue-400">email me </a>

@@ -19,10 +19,13 @@ export function AboutMeCard() {
                         Let's👋
                         Work Together
                         </CardTitle>
-                        <CardDescription className="flex justify-start">
+                        <CardDescription className="flex justify-start gap-5 items-center">
                           <Button variant={'default'}>🚀 Available for work</Button>
-                          <a  href="https://drive.google.com/file/d/12xX3AlgSTGDO7RLvOTI3B6HyzzG-ZqCJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                          {/* <a  href="https://drive.google.com/file/d/12xX3AlgSTGDO7RLvOTI3B6HyzzG-ZqCJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                               <Button variant={'ghost'}>Check cv/resume</Button>
+                          </a> */}
+                          <a className="font-semibold">
+                            View my progress reports
                           </a>
                         </CardDescription>
                     </CardHeader>   

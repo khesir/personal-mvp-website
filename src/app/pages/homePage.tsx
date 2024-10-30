@@ -4,7 +4,7 @@ import { BlogList } from "../_components/blogList"
 import { usePathname } from "@/hooks/use-pathname-store"
 import { useEffect } from "react"
 
-import { Github, TwitterIcon, Linkedin, Mail } from "lucide-react"
+import { Github, TwitterIcon, Mail } from "lucide-react"
 import { Helmet } from "react-helmet-async"
 import { TopProjects } from "../_components/topProjects"
 import { Separator } from "@/components/ui/separator"
@@ -33,12 +33,12 @@ export default function Homepage() {
                             <CardHeader>
                                 <div className="w-full flex justify-end h-[200px] overflow-hidden rounded-3xl border ">
                                     <img 
-                                        src={'/img/profile2.jpg'}
+                                        src={'/img/Mee.png'}
                                         className="w-full h-full object-cover pointer-events-none"
                                     />
                                 </div>
                                 <CardTitle className="group flex items-center gap-1 text-xl cursor-pointer">
-                                    Tollo, Aj (Khesir)
+                                    Khesir
                                 </CardTitle>
                                 <CardDescription>
                                     A Fullstack developer with interest of graphics and system architectures.
@@ -47,9 +47,6 @@ export default function Homepage() {
                             <CardFooter>
                             <div>
                                 <div className="flex flex-wrap items-center gap-2">
-                                    <a href="https://www.linkedin.com/in/ajtollo/" target="_blank" className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md">
-                                        <Linkedin className="w-6 h-6"/>
-                                    </a>
                                     <a href="https://github.com/khesir" target="_blank" className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md">
                                         <Github className="w-6 h-6"/>
                                     </a>

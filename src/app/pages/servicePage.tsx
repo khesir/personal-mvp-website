@@ -1,8 +1,16 @@
 import { Services } from "@/components/constant/data";
 import { Button } from "@/components/ui/Button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { usePathname } from "@/hooks/use-pathname-store";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export function ServicePage() {
+    const {setPathname} = usePathname();
+    const location = useLocation();
+    useEffect(() => {
+        setPathname(location.pathname);
+    }, [location.pathname, setPathname]); 
   return(
     <Card className="w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700" x-chunk="dashboard-05-chunk-4">
 
