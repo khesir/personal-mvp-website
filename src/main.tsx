@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next';
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './css/index.css'
@@ -9,6 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ThemeProvider>
       <HelmetProvider>
         <App />
+        <Analytics />
       </HelmetProvider>
     </ThemeProvider>
   </React.StrictMode>,
