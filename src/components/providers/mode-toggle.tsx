@@ -1,8 +1,8 @@
 'use client';
 
 import {MoonIcon, SunIcon} from 'lucide-react';
-import { Button } from '../ui/Button';
-import { useTheme } from './theme-provider';
+import {Button} from '../ui/Button';
+import {useTheme} from './theme-provider';
 
 export function ModeToggle() {
 	const {setTheme, theme} = useTheme();
