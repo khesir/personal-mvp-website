@@ -3,6 +3,7 @@ import {Badge} from '@/components/ui/badge';
 import {
 	Card,
 	CardDescription,
+	CardFooter,
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card';
@@ -61,48 +62,39 @@ export function ProjectList() {
 					href={`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`}
 				>
 					<Card
-						className="relative w-full h-[150px] overflow-hidden dark:bg-slate-800 dark:border-gray-700 cursor-pointer"
+						className="relative flex items-start justify-between w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700 cursor-pointer"
 						x-chunk="dashboard-05-chunk-4"
 						key={i}
 					>
-						<div className="flex items-center justify-start h-full">
-							<div className="w-[20%] h-full flex-shrink-0">
-								<img
-									src={
-										d.properties['Image'].files.length === 0
-											? '/img/placeholder.jpg'
-											: d.properties['Image'].files[0].file.url
-									}
-									className="w-full h-full object-top object-cover"
-								/>
-							</div>
-							<CardHeader className="flex-grow">
-								<CardTitle className="font-semibold text-lg  hover:underline">
-									<Link
-										to={`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`}
-										className={`text-blue-600 dark:text-blue-400 ${location.pathname === '/' ? 'text-sm' : 'text-lg'}`}
-									>
-										{d.properties.Name.title[0].plain_text}
-									</Link>
-								</CardTitle>
-								<CardDescription className="font-semibold text-sm">
-									<div className="flex gap-1">
-										{d.properties['Languages']?.multi_select.map(
-											(data: any, index: any) => (
-												<Badge key={index} variant={'outline'}>
-													{data.name}
-												</Badge>
-											),
-										)}
-									</div>
-									<p className="font-semibold text-sm text-slate-500 dark:text-slate-400">
-										{d.properties['Released Date']?.date?.start
-											? dateParser(d.properties['Released Date'].date.start)
-											: 'In progress'}
-									</p>
-								</CardDescription>
-							</CardHeader>
-						</div>
+						<CardHeader>
+							<CardTitle className="font-semibold text-lg  hover:underline">
+								<Link
+									to={`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`}
+									className={`text-blue-600 dark:text-blue-400 ${location.pathname === '/' ? 'text-sm' : 'text-lg'}`}
+								>
+									{d.properties.Name.title[0].plain_text}
+								</Link>
+							</CardTitle>
+							<CardDescription className="font-semibold text-sm">
+								<div className="flex gap-1">
+									{d.properties['Languages']?.multi_select.map(
+										(data: any, index: any) => (
+											<Badge key={index} variant={'outline'}>
+												{data.name}
+											</Badge>
+										),
+									)}
+								</div>
+							</CardDescription>
+						</CardHeader>
+						<CardFooter className="p-5">
+							{' '}
+							<p className="font-semibold text-sm text-slate-500 dark:text-slate-400">
+								{d.properties['Released Date']?.date?.start
+									? dateParser(d.properties['Released Date'].date.start)
+									: 'In progress'}
+							</p>
+						</CardFooter>
 						{/* <div className="absolute bottom-1 right-1 flex">
               <Button size={'icon'} variant={'outline'}><Github /></Button>
               <Button size={'icon'} variant={'outline'}><Rocket /></Button>

@@ -17,7 +17,7 @@ export default function Homepage() {
 	}, [location.pathname, setPathname]);
 	return (
 		<div className="dark:text-white flex flex-col md:flex-row gap-3 mt-5">
-			<Card className="w-full md:w-[300px] flex flex-col md:flex-col items-center md:items-start overflow-hidden dark:bg-slate-800 dark:border-gray-700">
+			<Card className="w-full md:w-[400px] flex flex-col md:flex-col items-center md:items-start overflow-hidden dark:bg-slate-800 dark:border-gray-700">
 				<CardHeader className="flex-[5] w-full">
 					<div className="w-full h-[200px] md:h-full overflow-hidden rounded-3xl border">
 						<img
@@ -69,7 +69,7 @@ export default function Homepage() {
 					</div>
 				</CardFooter>
 			</Card>
-			<div className="flex flex-col dark:bg-slate-800 dark:border-gray-700">
+			<div className="flex flex-col w-full gap-3 dark:bg-slate-800 dark:border-gray-700">
 				<div className="flex justify-between">
 					<Link to={'/works'}>
 						<p className="font-semibold text-2xl mb-2">Top Project</p>

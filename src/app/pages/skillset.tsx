@@ -2,12 +2,14 @@ import {Card, CardHeader, CardContent, CardFooter} from '@/components/ui/card';
 import {Github, TwitterIcon, Mail} from 'lucide-react';
 import {usePathname} from '@/hooks/use-pathname-store';
 import {useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {FaDiscord} from 'react-icons/fa';
 
 import {ModeToggle} from '@/components/providers/mode-toggle';
+import {Button} from '@/components/ui/Button';
 
 export default function SkillSetPage() {
+	const navigate = useNavigate();
 	const {setPathname} = usePathname();
 	const location = useLocation();
 	useEffect(() => {
@@ -18,9 +20,12 @@ export default function SkillSetPage() {
 			<div className="fixed bottom-5 right-10 bg-blue-400 flex justify-center items-center w-[65px] h-[65px] rounded-full z-20 cursor-pointer">
 				<ModeToggle />
 			</div>
-			<div className="w-[80%] h-full my-10 space-y-10">
-				<div className="flex gap-10">
-					<Card className="w-full md:w-[300px] flex flex-col md:flex-col items-center md:items-start overflow-hidden dark:bg-slate-800 dark:border-gray-700">
+			<div className="w-[80%] h-full my-5 space-y-3">
+				<div>
+					<Button onClick={() => navigate(-1)}>Back</Button>
+				</div>
+				<div className="flex flex-col md:flex-row gap-10">
+					<Card className="w-full md:w-[400px] lg:w-[300px] flex flex-col md:flex-col items-center md:items-start overflow-hidden dark:bg-slate-800 dark:border-gray-700">
 						<CardHeader className="flex-[5] w-full">
 							<div className="w-full h-[200px] md:h-full overflow-hidden rounded-3xl border">
 								<img
@@ -95,16 +100,7 @@ export default function SkillSetPage() {
 										<li className="font-semibold">Bash and Shell Script</li>
 									</ul>
 								</div>
-								<div className="flex flex-col">
-									<h1 className="text-xl font-bold">Education</h1>
-									<ul className="list-disc pl-5">
-										<li className="font-semibold">Mostly self taught</li>
-										<li className="font-semibold">
-											Current Bachelor&apos;s Degree -- Ateneo De Davao
-											University
-										</li>
-									</ul>
-								</div>
+
 								<div></div>
 							</div>
 
@@ -144,6 +140,41 @@ export default function SkillSetPage() {
 						</div>
 
 						<div></div>
+					</Card>
+				</div>
+			</div>
+			<div className="w-[80%] h-full mb-5">
+				<div className="flex flex-col md:flex-row  gap-10">
+					<Card className="flex-[6] dark:bg-slate-800 dark:border-gray-700 p-5">
+						<div className="flex flex-col">
+							<h1 className="text-xl font-bold">Professional Experience</h1>
+							<ul className="list-disc pl-5">
+								<li className="font-semibold">
+									Dec 2024 - Present -- BEfied (fka Edufied), as Software
+									Engineer (Automation) Intern
+								</li>
+								<li className="font-semibold">
+									July 2024 - Present -- SAMAHAN Systems Development, as a
+									Fullstack Developer
+								</li>
+								<li className="font-semibold">
+									March 2024 - Present -- years of freelancing experience mostly
+									working with Bots and Websites as a fullstack developer
+								</li>
+							</ul>
+						</div>
+					</Card>
+					<Card className="flex-[4] dark:bg-slate-800 dark:border-gray-700 p-5">
+						<div className="flex flex-col">
+							<h1 className="text-xl font-bold">Education</h1>
+							<ul className="list-disc pl-5">
+								<li className="font-semibold">Mostly self taught</li>
+								<li className="font-semibold">
+									Studying for a Bachelor&apos;s Degree -- Ateneo De Davao
+									University
+								</li>
+							</ul>
+						</div>
 					</Card>
 				</div>
 			</div>
