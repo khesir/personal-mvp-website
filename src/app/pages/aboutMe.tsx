@@ -1,9 +1,3 @@
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from '@/components/ui/accordion';
 import {Button} from '@/components/ui/Button';
 import {
 	Card,
@@ -14,13 +8,10 @@ import {
 	CardFooter,
 } from '@/components/ui/card';
 import {Github, TwitterIcon, MailPlusIcon} from 'lucide-react';
-import {ProgressList} from '../_components/progressList';
 import {usePathname} from '@/hooks/use-pathname-store';
 import {useEffect} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {FaDiscord} from 'react-icons/fa';
-import {Experties} from '@/components/constant/data';
-import {ExpertiseCard} from '../_components/experitise';
 
 export default function AboutMe() {
 	const navigate = useNavigate();

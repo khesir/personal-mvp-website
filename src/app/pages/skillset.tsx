@@ -1,30 +1,13 @@
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from '@/components/ui/accordion';
-import {Button} from '@/components/ui/Button';
-import {
-	Card,
-	CardHeader,
-	CardTitle,
-	CardDescription,
-	CardContent,
-	CardFooter,
-} from '@/components/ui/card';
+import {Card, CardHeader, CardContent, CardFooter} from '@/components/ui/card';
 import {Github, TwitterIcon, Mail} from 'lucide-react';
-import {ProgressList} from '../_components/progressList';
 import {usePathname} from '@/hooks/use-pathname-store';
 import {useEffect} from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import {FaDiscord} from 'react-icons/fa';
-import {Experties} from '@/components/constant/data';
-import {ExpertiseCard} from '../_components/experitise';
+
 import {ModeToggle} from '@/components/providers/mode-toggle';
 
 export default function SkillSetPage() {
-	const navigate = useNavigate();
 	const {setPathname} = usePathname();
 	const location = useLocation();
 	useEffect(() => {
