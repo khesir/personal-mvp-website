@@ -5,7 +5,7 @@ import {useLocation, useSearchParams} from 'react-router-dom';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 
-import '../../css/markdown.css';
+import '../../../css/markdown.css';
 import {useCustomBanner} from '@/hooks/useCustomBanner';
 import {usePathname} from '@/hooks/use-pathname-store';
 import {Breadcrumbs} from '@/components/breadcrumbs';

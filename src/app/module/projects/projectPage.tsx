@@ -1,7 +1,7 @@
-import {ProjectList} from '../_components/projectsList';
 import {useLocation} from 'react-router-dom';
 import {usePathname} from '@/hooks/use-pathname-store';
 import {useEffect} from 'react';
+import {ProjectList} from '@/app/_components/projectsList';
 
 export function ProjectPage() {
 	const {setPathname} = usePathname();

@@ -4,9 +4,9 @@ import {usePathname} from '@/hooks/use-pathname-store';
 import {useEffect} from 'react';
 
 import {Github, TwitterIcon, Mail} from 'lucide-react';
-import {TopProjects} from '../_components/topProjects';
 
 import {FaDiscord} from 'react-icons/fa';
+import {TopProjects} from '@/app/_components/topProjects';
 
 export default function Homepage() {
 	const {setPathname} = usePathname();

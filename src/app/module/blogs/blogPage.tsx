@@ -1,7 +1,7 @@
-import {BlogList} from '../_components/blogList';
 import {usePathname} from '@/hooks/use-pathname-store';
 import {useLocation} from 'react-router-dom';
 import {useEffect} from 'react';
+import {BlogList} from '@/app/_components/blogList';
 
 export function BlogPage() {
 	const {setPathname} = usePathname();
