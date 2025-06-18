@@ -1,16 +1,16 @@
 import {BrowserRouter, Route, Routes as Router} from 'react-router-dom';
 
 import SandBoxPage from './sandbox/SandBoxPage';
-import {GuestchatPage} from './pages/guestchatPage';
-import {BlogPage} from './pages/blogPage';
-import {ProjectPage} from './pages/projectPage';
-import Homepage from './pages/homePage';
-import {ReadPage} from './pages/readingPage';
-import {BaseLayout} from '@/components/layout/pagelayout';
-import {ProgressPage} from './pages/progress';
-import AboutMe from './pages/aboutMe';
-import {ServicePage} from './pages/servicePage';
-import SkillSetPage from './pages/skillset';
+import {GuestchatPage} from './module/guestChat/guestchatPage';
+import {ReadPage} from './_components/readPage/readingPage';
+import {BaseLayout} from '@/app/layouts/pagelayout';
+import AboutMe from './module/aboutme/aboutMe';
+import {ServicePage} from './module/services/servicePage';
+import SkillSetPage from './module/skillset/skillset';
+import {BlogPage} from './module/blogs/blogPage';
+import Homepage from './module/home/homePage';
+import {ProgressPage} from './module/progress/progress';
+import {ProjectPage} from './module/projects/projectPage';
 
 export default function App() {
 	return (

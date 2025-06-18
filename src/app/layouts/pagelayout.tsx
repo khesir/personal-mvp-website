@@ -1,7 +1,7 @@
-import {Banner} from '../banner-section';
+import {Banner} from '../../components/banner-section';
 import {Outlet} from 'react-router-dom';
 import {Layout} from './baselayout';
-import {Navbar} from '../navbar';
+import {Navbar} from '../../components/navbar';
 
 export function BaseLayout() {
 	return (
