@@ -40,8 +40,6 @@ export function ReadPage({name}: ReadpageProps) {
 				const response = await axios.get(
 					`https://personal-backend-psi.vercel.app/${name}/${searchParams.get('id')}`,
 				);
-				console.log(response);
-				console.log(response.data.result.data);
 				setMarkdown(response.data.result.markdown);
 				setData(response.data.result.data);
 			} catch (err) {

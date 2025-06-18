@@ -1,7 +1,6 @@
 import {Banner} from '../../components/banner-section';
 import {Outlet} from 'react-router-dom';
 import {Layout} from './baselayout';
-import {Navbar} from '../../components/navbar';
 
 export function BaseLayout() {
 	return (
@@ -9,7 +8,7 @@ export function BaseLayout() {
 			<div className="2xl:w-[50%] xl:w-3/5 lg:w-3/5 sm:w-4/5 w-10/12 h-full ">
 				<div className="flex flex-col gap-5">
 					<Banner />
-					<Navbar />
+					{/* <Navbar /> */}
 					<Outlet />
 				</div>
 			</div>
