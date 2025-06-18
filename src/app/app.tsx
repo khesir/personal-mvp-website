@@ -39,7 +39,7 @@ export default function App() {
 				</Route>
 				<Route path="/sandbox" element={<SandBoxPage />} />
 				<Route path="*" />
-				<Route path="/about/skillset" element={<SkillSetPage />} />
+				<Route path="/skillset" element={<SkillSetPage />} />
 			</Router>
 		</BrowserRouter>
 	);

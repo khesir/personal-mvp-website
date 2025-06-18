@@ -1,25 +1,26 @@
 import {Card, CardHeader, CardContent, CardFooter} from '@/components/ui/card';
-import {Link, useLocation} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {usePathname} from '@/hooks/use-pathname-store';
 import {useEffect} from 'react';
 
-import {Github, TwitterIcon, Mail} from 'lucide-react';
+import {Github, TwitterIcon, Mail, LinkedinIcon} from 'lucide-react';
 
-import {FaDiscord} from 'react-icons/fa';
-import {TopProjects} from '@/app/_components/topProjects';
+import {TopProjects} from '@/app/module/home/topProjects';
+import {Button} from '@/components/ui/Button';
 
 export default function Homepage() {
 	const {setPathname} = usePathname();
 	const location = useLocation();
-
+	const navigate = useNavigate();
 	useEffect(() => {
 		setPathname(location.pathname);
 	}, [location.pathname, setPathname]);
+
 	return (
-		<div className="dark:text-white flex flex-col md:flex-row gap-3 mt-5">
-			<Card className="w-full md:w-[400px] flex flex-col md:flex-col items-center md:items-start overflow-hidden dark:bg-slate-800 dark:border-gray-700">
-				<CardHeader className="flex-[5] w-full">
-					<div className="w-full h-[200px] md:h-full overflow-hidden rounded-3xl border">
+		<div className="dark:text-white flex flex-col gap-3 mt-5">
+			<Card className="w-full flex flex-row items-center justify-center overflow-hidden dark:bg-slate-800 dark:border-gray-700">
+				<CardHeader className=" w-[250px]">
+					<div className="w-full overflow-hidden rounded-3xl border">
 						<img
 							src={'/img/profile3.jpg'}
 							className="w-full h-full object-cover pointer-events-none"
@@ -28,9 +29,17 @@ export default function Homepage() {
 				</CardHeader>
 
 				<CardContent className="flex-[3] w-full">
-					<div className="text-xl block font-semibold">Khesir</div>
-					<div>Artist, Game Developer, and Software Engineer</div>
-					<div className="pt-5">Email me or pm me via discord for requests</div>
+					<div className="text-xl block font-semibold">Khesir (AJ)</div>
+					<div>Software Engineer</div>
+					<div className="mt-5">
+						Backend and game developer focused on scalable architecture for
+						games and software.
+					</div>
+
+					<div className="space-x-3 mt-3">
+						<Button variant={'outline'}>Contact Me</Button>
+						<Button onClick={() => navigate('skillset')}>More Details</Button>
+					</div>
 				</CardContent>
 
 				<CardFooter className="flex-[1] w-full">
@@ -59,12 +68,12 @@ export default function Homepage() {
 							<Mail className="w-6 h-6" />
 						</a>
 						<a
-							href="https://discord.gg/B5YR7DPjFX"
+							href="https://www.linkedin.com/in/ajtollo/"
 							target="_blank"
 							className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md"
 							rel="noreferrer"
 						>
-							<FaDiscord className="w-6 h-6" />
+							<LinkedinIcon className="w-6 h-6" />
 						</a>
 					</div>
 				</CardFooter>

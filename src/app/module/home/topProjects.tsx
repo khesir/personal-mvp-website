@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import {fetchProjects} from '@/app/api/projects';
 import {Badge} from '@/components/ui/badge';
 import {
 	Card,
+	CardContent,
 	CardDescription,
 	CardFooter,
 	CardHeader,
@@ -9,23 +11,22 @@ import {
 } from '@/components/ui/card';
 import {Skeleton} from '@/components/ui/skeleton';
 import {dateParser} from '@/lib/utils';
-import axios from 'axios';
 import {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import Masonry from 'react-masonry-css';
 
 export function TopProjects() {
 	const [projects, setProjects] = useState([]);
 	const [res, setRes] = useState(null);
 	const [loading, setLoading] = useState(false);
-
+	const navigate = useNavigate();
 	useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true);
 			try {
-				const data = await axios.get(
-					'https://personal-backend-psi.vercel.app/projects?pageSize=3',
-				);
-				setProjects(data.data.result.results);
+				const data = await fetchProjects();
+				console.log(data);
+				setProjects(data);
 			} catch (e: any) {
 				setRes(e.toString());
 			} finally {
@@ -53,19 +54,41 @@ export function TopProjects() {
 	if (projects.length === 0) {
 		return <div> No Data Available</div>;
 	}
+	const breakpointColumnsObj = {
+		default: 3,
+		1100: 2,
+		700: 2,
+		500: 1,
+	};
 	return (
-		<div className="flex flex-col gap-5">
+		<Masonry
+			breakpointCols={breakpointColumnsObj}
+			className="my-masonry-grid"
+			columnClassName="my-masonry-grid_column"
+		>
 			{projects.map((d: any, i) => (
-				<a
+				<div
 					key={i}
-					href={`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`}
+					onClick={() =>
+						navigate(
+							`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}` +
+								`?id=${d.id}`,
+						)
+					}
 				>
-					<Card
-						className="relative flex flex-col md:flex-row h-[150px] md:h-full items-start justify-between w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700 cursor-pointer"
-						x-chunk="dashboard-05-chunk-4"
-					>
-						<CardHeader>
-							<CardTitle className="font-semibold text-xl  hover:underline">
+					<Card className="relative flex flex-col items-start justify-between w-full overflow-hidden dark:bg-slate-800 dark:border-gray-700 cursor-pointer">
+						<CardHeader className="h-[200px] w-full">
+							<div className="w-full overflow-hidden rounded-3xl border">
+								<img
+									src={
+										d.properties.Image.files[0].file.url || '/img/profile3.jpg'
+									}
+									className="w-full h-full object-cover pointer-events-none"
+								/>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<CardTitle className="w-full font-semibold text-xl  hover:underline">
 								<Link
 									to={`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`}
 									className={`text-blue-600 dark:text-blue-400 ${location.pathname === '/' ? 'text-sm' : 'text-lg'}`}
@@ -74,7 +97,7 @@ export function TopProjects() {
 								</Link>
 							</CardTitle>
 							<CardDescription className="font-semibold text-sm">
-								<div className="flex gap-1">
+								<div className="flex gap-1 flex-wrap">
 									{d.properties['Languages']?.multi_select.map(
 										(data: any, index: any) => (
 											<Badge key={index} variant={'outline'}>
@@ -84,8 +107,8 @@ export function TopProjects() {
 									)}
 								</div>
 							</CardDescription>
-						</CardHeader>
-						<CardFooter className="md:px-5 md:py-7">
+						</CardContent>
+						<CardFooter>
 							{' '}
 							<p className="font-semibold text-sm text-slate-500 dark:text-slate-400">
 								{d.properties['Released Date']?.date?.start
@@ -98,8 +121,8 @@ export function TopProjects() {
               <Button size={'icon'} variant={'outline'}><Rocket /></Button>
             </div> */}
 					</Card>
-				</a>
+				</div>
 			))}
-		</div>
+		</Masonry>
 	);
 }

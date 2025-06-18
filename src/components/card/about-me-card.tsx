@@ -26,15 +26,6 @@ export function AboutMeCard() {
 						<Button variant={'default'} onClick={() => navigate('services')}>
 							🚀 View Services
 						</Button>
-						{/* <a  href="https://drive.google.com/file/d/12xX3AlgSTGDO7RLvOTI3B6HyzzG-ZqCJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                              <Button variant={'ghost'}>Check cv/resume</Button>
-                          </a> */}
-						<a
-							className="font-semibold cursor-pointer"
-							onClick={() => navigate('about')}
-						>
-							More about me
-						</a>
 					</CardDescription>
 				</CardHeader>
 			</Card>
