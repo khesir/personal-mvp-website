@@ -3,6 +3,7 @@ import {fetchExperiences} from '@/app/api/experience';
 import {Badge} from '@/components/ui/badge';
 import {Card, CardContent, CardFooter} from '@/components/ui/card';
 import {Skeleton} from '@/components/ui/skeleton';
+import {dateParser} from '@/lib/utils';
 import {motion} from 'framer-motion';
 import {RefreshCw} from 'lucide-react';
 import {useEffect, useState} from 'react';
@@ -112,12 +113,20 @@ export function ExperienceSection() {
 								<div
 									className={`text-[1.1rem] font-semibold text-black dark:text-white ${location.pathname === '/' ? 'text-sm' : 'text-lg'}`}
 								>
-									{d.properties.CompanyName.rich_text[0].plain_text}
+									{d.properties.Position.title[0]?.plain_text}
 								</div>
 								<div>
 									<p className="font-semibold text-xs text-slate-500 dark:text-slate-400">
-										{d.properties.JobType.select.name} -{' '}
-										{d.properties.Position.title[0]?.plain_text}
+										{d.properties.CompanyName.rich_text[0].plain_text}-{' '}
+										{d.properties.JobType.select.name}
+									</p>
+								</div>
+								<div>
+									<p className="font-semibold text-xs text-slate-500 dark:text-slate-400">
+										{dateParser(d.properties['Duration'].date.start)} -{' '}
+										{d.properties['Duration']?.date?.end
+											? dateParser(d.properties['Duration'].date.end)
+											: 'Present'}
 									</p>
 								</div>
 							</div>

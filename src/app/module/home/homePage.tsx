@@ -3,7 +3,7 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import {usePathname} from '@/hooks/use-pathname-store';
 import {useEffect, useState} from 'react';
 
-import {Github, TwitterIcon, Mail, LinkedinIcon} from 'lucide-react';
+import {Github} from 'lucide-react';
 
 import {TopProjects} from '@/app/module/home/topProjects';
 import {Button} from '@/components/ui/Button';
@@ -12,6 +12,13 @@ import {Textarea} from '@/components/ui/textarea';
 import {Label} from '@/components/ui/label';
 import {toast} from 'sonner';
 import {ExperienceSection} from './experienceSection';
+import {Icon} from '@iconify/react';
+
+// Iconify icon names for the respective languages
+const csharpIcon = 'devicon:csharp';
+const typescriptIcon = 'devicon:typescript';
+const pythonIcon = 'devicon:python';
+const cplusplusIcon = 'devicon:cplusplus';
 
 export default function Homepage() {
 	const {setPathname} = usePathname();
@@ -115,48 +122,48 @@ export default function Homepage() {
 					</div>
 
 					<div className="space-x-3 md:flex mt-3 hidden">
-						<Button variant={'outline'}>Contact Me</Button>
+						<Button
+							variant={'outline'}
+							onClick={() => {
+								const el = document.getElementById('contact');
+								if (el) el.scrollIntoView({behavior: 'smooth'});
+							}}
+						>
+							Contact Me
+						</Button>
 						<Button onClick={() => navigate('skillset')}>More Details</Button>
-					</div>
-				</CardContent>
-
-				<CardFooter className="flex-[1] md:px-1 w-full flex justify-between items-center">
-					<div className="flex flex-wrap items-center gap-2">
 						<a
 							href="https://github.com/khesir"
 							target="_blank"
 							className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md"
 							rel="noreferrer"
 						>
-							<Github className="w-6 h-6" />
-						</a>
-						<a
-							href="https://x.com/khesirr"
-							target="_blank"
-							className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md"
-							rel="noreferrer"
-						>
-							<TwitterIcon className="w-6 h-6" />
-						</a>
-						<a
-							href="mailto:khesir2002@gmail.com"
-							className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md"
-							rel="noreferrer"
-						>
-							<Mail className="w-6 h-6" />
-						</a>
-						<a
-							href="https://www.linkedin.com/in/ajtollo/"
-							target="_blank"
-							className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md"
-							rel="noreferrer"
-						>
-							<LinkedinIcon className="w-6 h-6" />
+							<Github className="w-[100%] h-[100%]" />
 						</a>
 					</div>
-					<div className="space-x-1 block md:hidden">
-						<Button variant={'outline'}>Contact Me</Button>
+				</CardContent>
+
+				<CardFooter className="flex-[1] md:px-1 w-full flex justify-between items-center">
+					<Card className="flex flex-col gap-2 border p-3 dark:bg-slate-800 dark:border-gray-700  rounded-3xl">
+						<div className=" font-semibold">Preffered</div>
+						<div className="flex flex-wrap items-center gap-2 justify-center">
+							<Icon icon={csharpIcon} className="w-8 h-8" />
+							<Icon icon={typescriptIcon} className="w-8 h-8" />
+							<Icon icon={pythonIcon} className="w-8 h-8" />
+							<Icon icon={cplusplusIcon} className="w-8 h-8" />
+						</div>
+					</Card>
+					<div className="w-full ml-5 gap-3 space-x-1 flex flex-col md:hidden md:flex-row">
 						<Button onClick={() => navigate('skillset')}>More Details</Button>
+						<Button
+							variant={'outline'}
+							onClick={() => {
+								const el = document.getElementById('contact');
+								if (el) el.scrollIntoView({behavior: 'smooth'});
+							}}
+						>
+							Contact Me
+						</Button>
 					</div>
 				</CardFooter>
 			</div>
