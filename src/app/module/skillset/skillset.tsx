@@ -88,7 +88,7 @@ export default function SkillSetPage() {
 										<li className="font-semibold">Python</li>
 										<li className="font-semibold">Javascript / Typescript</li>
 										<li className="font-semibold">C++</li>
-										<li className="font-semibold">GO</li>
+										<li className="font-semibold">C#</li>
 									</ul>
 								</div>
 								<div className="flex flex-col">

@@ -1,9 +1,9 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import {type ClassValue, clsx} from 'clsx';
+import {twMerge} from 'tailwind-merge';
 import {format, parseISO} from 'date-fns';
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+	return twMerge(clsx(inputs));
 }
 
 export function dateParser(isoString: string): string {
@@ -27,5 +27,5 @@ export function dateParser(isoString: string): string {
 }
 
 export const capitalizeFirstLetter = (string: string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+	return string.charAt(0).toUpperCase() + string.slice(1);
 };
