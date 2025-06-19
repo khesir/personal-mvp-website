@@ -1,17 +1,8 @@
 import axios from 'axios';
 
 export const fetchProjects = async () => {
-	try {
-		const res = await axios.get(`${import.meta.env.VITE_API_URL}/projects`);
-		console.log(res.data);
-		return res.data;
-	} catch (e) {
-		if (e instanceof Error) {
-			console.log(e.toString());
-		} else {
-			console.log(String(e));
-		}
-	}
+	const res = await axios.get(`${import.meta.env.VITE_API_URL}/projects`);
+	return res.data;
 };
 export const fetchProjectsByID = async (id: string) => {
 	try {
@@ -21,10 +12,6 @@ export const fetchProjectsByID = async (id: string) => {
 		console.log(res.data.result);
 		return res.data.result;
 	} catch (e) {
-		if (e instanceof Error) {
-			console.log(e.toString());
-		} else {
-			console.log(String(e));
-		}
+		throw e;
 	}
 };

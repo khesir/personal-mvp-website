@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {useEffect, useState} from 'react';
 import {useLocation, useSearchParams} from 'react-router-dom';
-import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 
 import '../../../css/markdown.css';

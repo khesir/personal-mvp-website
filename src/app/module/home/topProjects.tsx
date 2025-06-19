@@ -6,7 +6,7 @@ import {dateParser} from '@/lib/utils';
 import {useState, useEffect} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import Masonry from 'react-masonry-css';
-import {ArrowUpRight, Github} from 'lucide-react';
+import {ArrowUpRight, Github, RefreshCw} from 'lucide-react';
 import {motion} from 'framer-motion';
 import {Button} from '@/components/ui/Button';
 import {
@@ -15,6 +15,8 @@ import {
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import {Separator} from '@/components/ui/separator';
+import {Card, CardContent, CardFooter} from '@/components/ui/card';
+import {toast} from 'sonner';
 const containerVariants = {
 	initial: {},
 	animate: {
@@ -34,19 +36,20 @@ export function TopProjects() {
 	const [res, setRes] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
+	const fetchData = async () => {
+		setRes(null);
+		setLoading(true);
+		try {
+			const data = await fetchProjects();
+			setProjects(data);
+		} catch (e: any) {
+			toast.error(e instanceof Error ? e.message : String(e));
+			setRes(e.toString());
+		} finally {
+			setLoading(false);
+		}
+	};
 	useEffect(() => {
-		const fetchData = async () => {
-			setLoading(true);
-			try {
-				const data = await fetchProjects();
-				setProjects(data);
-			} catch (e: any) {
-				setRes(e.toString());
-			} finally {
-				setLoading(false);
-			}
-		};
-
 		fetchData();
 	}, []);
 
@@ -55,6 +58,26 @@ export function TopProjects() {
 		2000: 2,
 		900: 1,
 	};
+	if (res) {
+		return (
+			<div className="flex flex-col w-full gap-3 dark:bg-slate-800 dark:border-gray-700">
+				<div className="flex justify-between">
+					<Link to={'/projects'}>
+						<p className="font-semibold text-2xl mb-2">Projects</p>
+					</Link>
+				</div>
+				<Card
+					className="flex justify-between pt-5 hover:dark:bg-slate-800 hover:bg-slate-300 transition-all"
+					onClick={() => fetchData()}
+				>
+					<CardContent>Something went wrong while fetching data</CardContent>
+					<CardFooter>
+						<RefreshCw />
+					</CardFooter>
+				</Card>
+			</div>
+		);
+	}
 	if (loading || !projects) {
 		return (
 			<>
@@ -88,9 +111,7 @@ export function TopProjects() {
 			</>
 		);
 	}
-	if (res) {
-		return <div> {res} </div>;
-	}
+
 	if (projects.length === 0 && !loading) {
 		return <div> No Data Available</div>;
 	}
@@ -177,80 +198,84 @@ export function TopProjects() {
 						className="my-masonry-grid"
 						columnClassName="my-masonry-grid_column"
 					>
-						{projects.map((d: any, i) => (
-							<motion.div
-								key={i}
-								variants={cardVariants}
-								className="w-full dark:bg-slate-900 border dark:border-none relative flex flex-col rounded-3xl items-start justify-between overflow-hidden dark:border-gray-700 cursor-pointer"
-							>
-								<div
-									className="w-full overflow-hidden rounded-3xl h-[200px] border-transparent"
-									onClick={() =>
-										navigate(
-											`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`,
-										)
-									}
+						{projects.length === undefined ? (
+							<div>{projects}</div>
+						) : (
+							projects.map((d: any, i) => (
+								<motion.div
+									key={i}
+									variants={cardVariants}
+									className="w-full dark:bg-slate-900 border dark:border-none relative flex flex-col rounded-3xl items-start justify-between overflow-hidden dark:border-gray-700 cursor-pointer"
 								>
-									<img
-										src={
-											d.properties.Image.files[0].file.url ||
-											'/img/profile3.jpg'
+									<div
+										className="w-full overflow-hidden rounded-3xl h-[200px] border-transparent"
+										onClick={() =>
+											navigate(
+												`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`,
+											)
 										}
-										className="w-full h-full object-cover pointer-events-none"
-									/>
-								</div>
-								<div className="pt-3 px-5 w-full">
-									<div className="w-full flex justify-evenly gap-2">
-										<div className="flex-1">
-											<Link
-												to={`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`}
-												className={`text-[1.1rem] font-semibold text-black dark:text-white ${location.pathname === '/' ? 'text-sm' : 'text-lg'}`}
-											>
-												{d.properties.Name.title[0].plain_text}
-											</Link>
+									>
+										<img
+											src={
+												d.properties.Image.files[0].file.url ||
+												'/img/profile3.jpg'
+											}
+											className="w-full h-full object-cover pointer-events-none"
+										/>
+									</div>
+									<div className="pt-3 px-5 w-full">
+										<div className="w-full flex justify-evenly gap-2">
+											<div className="flex-1">
+												<Link
+													to={`/projects/view/${d.properties.Name.title[0].plain_text.replace(/\s+/g, '-')}?id=${d.id}`}
+													className={`text-[1.1rem] font-semibold text-black dark:text-white ${location.pathname === '/' ? 'text-sm' : 'text-lg'}`}
+												>
+													{d.properties.Name.title[0].plain_text}
+												</Link>
+											</div>
+											<div className="flex gap-2">
+												{d.properties.URL.url !== null && (
+													<a
+														href={d.properties.URL.url}
+														target="_blank"
+														rel="noreferrer"
+													>
+														<Github />
+													</a>
+												)}
+												{d.properties.Deployment.url !== null && (
+													<a
+														href={d.properties.Deployment.url}
+														target="_blank"
+														rel="noreferrer"
+													>
+														<ArrowUpRight />
+													</a>
+												)}
+											</div>
 										</div>
-										<div className="flex gap-2">
-											{d.properties.URL.url !== null && (
-												<a
-													href={d.properties.URL.url}
-													target="_blank"
-													rel="noreferrer"
-												>
-													<Github />
-												</a>
-											)}
-											{d.properties.Deployment.url !== null && (
-												<a
-													href={d.properties.Deployment.url}
-													target="_blank"
-													rel="noreferrer"
-												>
-													<ArrowUpRight />
-												</a>
-											)}
+										<div>
+											<p className="font-semibold text-xs text-slate-500 dark:text-slate-400">
+												Released Date:{' '}
+												{d.properties['Released Date']?.date?.start
+													? dateParser(d.properties['Released Date'].date.start)
+													: 'In progress'}
+											</p>
 										</div>
 									</div>
-									<div>
-										<p className="font-semibold text-xs text-slate-500 dark:text-slate-400">
-											Released Date:{' '}
-											{d.properties['Released Date']?.date?.start
-												? dateParser(d.properties['Released Date'].date.start)
-												: 'In progress'}
-										</p>
-									</div>
-								</div>
 
-								<div className="font-semibold text-sm px-5 pb-3 pt-3">
-									<div className="flex gap-1 flex-wrap">
-										{d.relatedData.map((data: any, index: any) => (
-											<Badge key={index}>
-												{data.properties['Name'].title[0].plain_text}
-											</Badge>
-										))}
+									<div className="font-semibold text-sm px-5 pb-3 pt-3">
+										<div className="flex gap-1 flex-wrap">
+											{d.relatedData.map((data: any, index: any) => (
+												<Badge key={index}>
+													{data.properties['Name'].title[0].plain_text}
+												</Badge>
+											))}
+										</div>
 									</div>
-								</div>
-							</motion.div>
-						))}
+								</motion.div>
+							))
+						)}
 					</Masonry>
 				</motion.div>
 			</div>
