@@ -42,10 +42,13 @@ export default function Homepage() {
 		if (!valid) return;
 
 		const payload = {
+			content: '<@409467545951928322> Someone Reached out',
+			allowed_mentions: {
+				users: ['409467545951928322'],
+			},
 			embeds: [
 				{
-					title: 'Person Has Reach out to you',
-					description: 'Source: Personal-Website',
+					description: 'Source: Personal Website',
 					color: 0x00bfff,
 					fields: [
 						{
@@ -57,6 +60,10 @@ export default function Homepage() {
 							name: 'Message',
 							value: message,
 							inline: false,
+						},
+						{
+							name: 'Quick Reply',
+							value: `[📧 Reply via Gmail](https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)})`,
 						},
 					],
 					footer: {
@@ -81,7 +88,7 @@ export default function Homepage() {
 				error: 'Error sending message, please try again later',
 			});
 		} catch (err) {
-			console.error('Error sending embed:', err);
+			toast.error(`Error sending embed: ${err}`);
 		} finally {
 			setLoading(false);
 		}
@@ -152,6 +159,11 @@ export default function Homepage() {
 					</div>
 				</CardFooter>
 			</div>
+			{/* <iframe
+				frameBorder="0"
+				className="w-full h-[180px] 3xl:h-[180px] rounded-3xl"
+				src="https://git-graph.vercel.app/embed/khesir?showColorLegend=false&showWeekdayLabels=false&showMonthLabels=true&showTotalCount=false&blockMargin=2&blockRadius=5&blockSize=17&fontSize=15&weekStart=6&year=2025"
+			></iframe> */}
 			{/* <Card className="p-5 dark:bg-slate-800 dark:border-gray-700 "></Card> */}
 			<TopProjects />
 			{/* <Card className="p-5 dark:bg-slate-800 dark:border-gray-700"></Card> */}

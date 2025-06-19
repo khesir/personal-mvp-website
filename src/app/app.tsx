@@ -17,19 +17,16 @@ export default function App() {
 		<BrowserRouter>
 			<Router>
 				<Route element={<BaseLayout />}>
-					<Route path="/progress-report" element={<ProgressPage />} />
-					<Route path="/about" element={<AboutMe />} />
-					<Route path="/guest-book" element={<GuestchatPage />} />
-					<Route path="/blogs" element={<BlogPage />} />
-					<Route path="works" element={<ProjectPage />} />
-					<Route path="/" index element={<Homepage />} />
-					<Route path="/services" element={<ServicePage />} />
+					<Route path="progress-report" element={<ProgressPage />} />
+					<Route path="about" element={<AboutMe />} />
+					<Route path="guest-book" element={<GuestchatPage />} />
+					<Route path="blogs" element={<BlogPage />} />
+					<Route path="projects" element={<ProjectPage />} />
+					<Route index element={<Homepage />} />
+					<Route path="services" element={<ServicePage />} />
+					<Route path="blogs/view/:title" element={<ReadPage name="blogs" />} />
 					<Route
-						path="/blogs/view/:title"
-						element={<ReadPage name="blogs" />}
-					/>
-					<Route
-						path="/projects/view/:title"
+						path="projects/view/:title"
 						element={<ReadPage name="projects" />}
 					/>
 					{/* <Route
@@ -37,9 +34,9 @@ export default function App() {
 						element={<ReadPage name="progress" />}
 					/> */}
 				</Route>
-				<Route path="/sandbox" element={<SandBoxPage />} />
+				<Route path="sandbox" element={<SandBoxPage />} />
 				<Route path="*" />
-				<Route path="/skillset" element={<SkillSetPage />} />
+				<Route path="skillset" element={<SkillSetPage />} />
 			</Router>
 		</BrowserRouter>
 	);

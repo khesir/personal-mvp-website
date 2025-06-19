@@ -57,20 +57,35 @@ export function TopProjects() {
 	};
 	if (loading || !projects) {
 		return (
-			<div className="flex justify-center">
-				<Masonry
-					breakpointCols={breakpointColumnsObj}
-					className="my-masonry-grid"
-					columnClassName="my-masonry-grid_column"
-				>
-					<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
-					<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
-					<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
-					<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
-					<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
-					<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
-				</Masonry>
-			</div>
+			<>
+				<div className="flex justify-between">
+					<Link to={'/projects'}>
+						<p className="font-semibold text-2xl mb-2">Projects</p>
+					</Link>
+					<div className="flex flex-col items-end pt-2">
+						<Link
+							to={'/projects'}
+							className="font-semibold text-md hover:underline text-blue-600 dark:text-blue-400/60"
+						>
+							See more
+						</Link>
+					</div>
+				</div>
+				<div className="flex justify-center">
+					<Masonry
+						breakpointCols={breakpointColumnsObj}
+						className="my-masonry-grid"
+						columnClassName="my-masonry-grid_column"
+					>
+						<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
+						<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
+						<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
+						<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
+						<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
+						<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
+					</Masonry>
+				</div>
+			</>
 		);
 	}
 	if (res) {
@@ -82,12 +97,12 @@ export function TopProjects() {
 	return (
 		<div className="flex flex-col w-full gap-3 dark:bg-slate-800 dark:border-gray-700">
 			<div className="flex justify-between">
-				<Link to={'/works'}>
+				<Link to={'/projects'}>
 					<p className="font-semibold text-2xl mb-2">Projects</p>
 				</Link>
 				<div className="flex flex-col items-end pt-2">
 					<Link
-						to={'/works'}
+						to={'/projects'}
 						className="font-semibold text-md hover:underline text-blue-600 dark:text-blue-400/60"
 					>
 						See more
@@ -195,12 +210,24 @@ export function TopProjects() {
 											</Link>
 										</div>
 										<div className="flex gap-2">
-											<a>
-												<Github />
-											</a>
-											<a>
-												<ArrowUpRight />
-											</a>
+											{d.properties.URL.url !== null && (
+												<a
+													href={d.properties.URL.url}
+													target="_blank"
+													rel="noreferrer"
+												>
+													<Github />
+												</a>
+											)}
+											{d.properties.Deployment.url !== null && (
+												<a
+													href={d.properties.Deployment.url}
+													target="_blank"
+													rel="noreferrer"
+												>
+													<ArrowUpRight />
+												</a>
+											)}
 										</div>
 									</div>
 									<div>
@@ -215,11 +242,11 @@ export function TopProjects() {
 
 								<div className="font-semibold text-sm px-5 pb-3 pt-3">
 									<div className="flex gap-1 flex-wrap">
-										{d.properties['Languages']?.multi_select.map(
-											(data: any, index: any) => (
-												<Badge key={index}>{data.name}</Badge>
-											),
-										)}
+										{d.relatedData.map((data: any, index: any) => (
+											<Badge key={index}>
+												{data.properties['Name'].title[0].plain_text}
+											</Badge>
+										))}
 									</div>
 								</div>
 							</motion.div>

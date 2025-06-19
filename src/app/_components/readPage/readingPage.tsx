@@ -14,6 +14,8 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import {Skeleton} from '@/components/ui/skeleton';
 import {Tweet} from 'react-twitter-widgets';
+import {fetchProjectsByID} from '@/app/api/projects';
+import {toast} from 'sonner';
 
 interface ReadpageProps {
 	name: string;
@@ -37,11 +39,22 @@ export function ReadPage({name}: ReadpageProps) {
 		const fetchData = async () => {
 			try {
 				setLoading(true);
-				const response = await axios.get(
-					`https://personal-backend-psi.vercel.app/${name}/${searchParams.get('id')}`,
-				);
-				setMarkdown(response.data.result.markdown);
-				setData(response.data.result.data);
+				const id = searchParams.get('id');
+				if (id === null) {
+					toast.error('Missing ID - Data not found');
+					return;
+				}
+				let response;
+				switch (name) {
+					case 'projects':
+						response = await fetchProjectsByID(id);
+						break;
+					case 'blogs':
+						break;
+				}
+				if (response === null) return;
+				setMarkdown(response.markdown);
+				setData(response.data);
 			} catch (err) {
 				console.error(err);
 				setError('Failed to load content');
