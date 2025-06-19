@@ -11,6 +11,7 @@ import {Input} from '@/components/ui/input';
 import {Textarea} from '@/components/ui/textarea';
 import {Label} from '@/components/ui/label';
 import {toast} from 'sonner';
+import {ExperienceSection} from './experienceSection';
 
 export default function Homepage() {
 	const {setPathname} = usePathname();
@@ -166,7 +167,7 @@ export default function Homepage() {
 			></iframe> */}
 			{/* <Card className="p-5 dark:bg-slate-800 dark:border-gray-700 "></Card> */}
 			<TopProjects />
-			{/* <ExperienceSection /> */}
+			<ExperienceSection />
 			<div
 				id="contact"
 				className="sm:border rounded-3xl w-full flex flex-col md:flex-row items-center justify-center overflow-hidden dark:bg-slate-800 dark:border-gray-700 p-5 "
@@ -209,7 +210,7 @@ export default function Homepage() {
 							<Button onClick={onSubmit}>Submit</Button>
 						</div>
 						<Card className="flex-1 mt-5 flex flex-col justify-center text-center dark:bg-slate-800 dark:border-gray-700">
-							<CardHeader>Note</CardHeader>
+							<CardHeader className=" font-semibold">Note</CardHeader>
 							<CardContent>
 								I&apos;m open to freelance opportunities and other inquiries.
 								Please note that I don’t create games for free or complete
