@@ -1,9 +1,7 @@
-import {Card, CardContent, CardFooter, CardHeader} from '@/components/ui/card';
+import {Card, CardContent} from '@/components/ui/card';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {usePathname} from '@/hooks/use-pathname-store';
 import {useEffect, useState} from 'react';
-
-import {Github} from 'lucide-react';
 
 import {TopProjects} from '@/app/module/home/topProjects';
 import {Button} from '@/components/ui/Button';
@@ -19,7 +17,7 @@ const csharpIcon = 'devicon:csharp';
 const typescriptIcon = 'devicon:typescript';
 const pythonIcon = 'devicon:python';
 const cplusplusIcon = 'devicon:cplusplus';
-
+const luaIcon = 'devicon:lua';
 export default function Homepage() {
 	const {setPathname} = usePathname();
 	const location = useLocation();
@@ -103,7 +101,7 @@ export default function Homepage() {
 	};
 	return (
 		<div className="dark:text-white flex flex-col gap-3 mt-5">
-			<div className=" sm:border rounded-3xl mb-5 w-full flex flex-col md:flex-row items-center justify-center overflow-hidden dark:bg-slate-800 dark:border-gray-700 ">
+			<div className=" sm:border rounded-3xl w-full flex flex-col md:flex-row items-center justify-center overflow-hidden dark:bg-slate-800 dark:border-gray-700 ">
 				<div className="w-[250px] h-[250px]">
 					<div className="w-full overflow-hidden rounded-3xl border">
 						<img
@@ -117,12 +115,17 @@ export default function Homepage() {
 					<div className="text-xl block font-semibold">Khesir (AJ)</div>
 					<div>Software Engineer</div>
 					<div className="mt-5">
-						Backend and game developer focused on scalable architecture for
-						games and software.
+						Yo! Nice to meet you — I’m Aj (also known as Khesir), a Software
+						Engineer specializing in backend and game development.
+					</div>
+
+					<div className="mt-2">
+						I focus on building scalable architectures for both games and
+						software platforms.
 					</div>
 
 					<div className="space-x-3 md:flex mt-3 hidden">
-						<Button
+						{/* <Button
 							variant={'outline'}
 							onClick={() => {
 								const el = document.getElementById('contact');
@@ -130,51 +133,28 @@ export default function Homepage() {
 							}}
 						>
 							Contact Me
-						</Button>
-						<Button onClick={() => navigate('skillset')}>More Details</Button>
-						<a
-							href="https://github.com/khesir"
-							target="_blank"
-							className="text-current border dark:border-black-1 border-gray-400 p-1 rounded-md"
-							rel="noreferrer"
-						>
-							<Github className="w-[100%] h-[100%]" />
-						</a>
+						</Button> */}
+						<Icon icon={typescriptIcon} className="w-8 h-8" />
+						<Icon icon={pythonIcon} className="w-8 h-8" />
+						<Icon icon={csharpIcon} className="w-8 h-8" />
+						<Icon icon={cplusplusIcon} className="w-8 h-8" />
+						<Icon icon={luaIcon} className="w-8 h-8" />
 					</div>
 				</CardContent>
-
-				<CardFooter className="flex-[1] md:px-1 w-full flex justify-between items-center">
-					<Card className="flex flex-col gap-2 border p-3 dark:bg-slate-800 dark:border-gray-700  rounded-3xl">
-						<div className=" font-semibold">Preffered</div>
-						<div className="flex flex-wrap items-center gap-2 justify-center">
-							<Icon icon={csharpIcon} className="w-8 h-8" />
-							<Icon icon={typescriptIcon} className="w-8 h-8" />
-							<Icon icon={pythonIcon} className="w-8 h-8" />
-							<Icon icon={cplusplusIcon} className="w-8 h-8" />
-						</div>
-					</Card>
-					<div className="w-full ml-5 gap-3 space-x-1 flex flex-col md:hidden md:flex-row">
-						<Button onClick={() => navigate('skillset')}>More Details</Button>
-						<Button
-							variant={'outline'}
-							onClick={() => {
-								const el = document.getElementById('contact');
-								if (el) el.scrollIntoView({behavior: 'smooth'});
-							}}
-						>
-							Contact Me
-						</Button>
-					</div>
-				</CardFooter>
 			</div>
 			{/* <iframe
 				frameBorder="0"
 				className="w-full h-[180px] 3xl:h-[180px] rounded-3xl"
 				src="https://git-graph.vercel.app/embed/khesir?showColorLegend=false&showWeekdayLabels=false&showMonthLabels=true&showTotalCount=false&blockMargin=2&blockRadius=5&blockSize=17&fontSize=15&weekStart=6&year=2025"
 			></iframe> */}
-			{/* <Card className="p-5 dark:bg-slate-800 dark:border-gray-700 "></Card> */}
+			<Card className="flex justify-between items-center p-5  rounded-3xl mb-5 dark:bg-slate-800 dark:border-gray-700">
+				Interested more about me?
+				<Button size={'sm'} onClick={() => navigate('about')}>
+					Click here
+				</Button>
+			</Card>
 			<TopProjects />
-			<ExperienceSection />
+			<ExperienceSection pageSize={4} displayHeader={true} />
 			<div
 				id="contact"
 				className="sm:border rounded-3xl w-full flex flex-col md:flex-row items-center justify-center overflow-hidden dark:bg-slate-800 dark:border-gray-700 p-5 "
@@ -217,16 +197,18 @@ export default function Homepage() {
 							<Button onClick={onSubmit}>Submit</Button>
 						</div>
 						<Card className="flex-1 mt-5 flex flex-col justify-center text-center dark:bg-slate-800 dark:border-gray-700">
-							<CardHeader className=" font-semibold">Note</CardHeader>
-							<CardContent>
-								I&apos;m open to freelance opportunities and other inquiries.
-								Please note that I don’t create games for free or complete
-								homework assignments. Feel free to reach out with any other
-								requests.
+							<CardContent className="text-[1.1rem]  rounded-3xl font-semibold">
+								Have an idea in mind? Let’s make it happen! Just fill out the
+								contact form on the left — I’ll get back to you as soon as I can
 							</CardContent>
 						</Card>
 					</div>
 				</div>
+			</div>
+			<div className="text-xs flex justify-center gap-5">
+				<a href="https://github.com/khesir">Github</a>
+				<a href="https://x.com/khesirr">Twitter</a>
+				<a href="https://www.twitch.tv/khesir">Twitch</a>
 			</div>
 		</div>
 	);

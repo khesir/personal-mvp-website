@@ -23,8 +23,17 @@ export function AboutMeCard() {
 						Open for Request and Freelance Work
 					</CardTitle>
 					<CardDescription className="flex justify-start gap-5 items-center">
-						<Button variant={'default'} onClick={() => navigate('services')}>
-							🚀 View Services
+						<Button
+							variant={'default'}
+							onClick={() => {
+								const el = document.getElementById('contact');
+								if (el) el.scrollIntoView({behavior: 'smooth'});
+							}}
+						>
+							Contact Me
+						</Button>
+						<Button variant={'outline'} onClick={() => navigate('blogs')}>
+							Blogs
 						</Button>
 					</CardDescription>
 				</CardHeader>

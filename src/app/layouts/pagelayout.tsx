@@ -1,8 +1,28 @@
 import {Banner} from '../../components/banner-section';
 import {Outlet} from 'react-router-dom';
 import {Layout} from './baselayout';
+import {ModeToggle} from '@/components/providers/mode-toggle';
+import {useEffect, useState} from 'react';
+import {AnimatePresence, motion} from 'framer-motion';
 
 export function BaseLayout() {
+	const [showButton, setShowButton] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const scrollY = window.scrollY;
+
+			// Show only when scroll is between 300 and 1000 pixels
+			if (scrollY > 300) {
+				setShowButton(true);
+			} else {
+				setShowButton(false);
+			}
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
 	return (
 		<Layout>
 			<div className="2xl:w-[50%] xl:w-3/5 lg:w-3/5 sm:w-4/5 w-10/12 h-full ">
@@ -12,6 +32,20 @@ export function BaseLayout() {
 					<Outlet />
 				</div>
 			</div>
+			<AnimatePresence>
+				{showButton && (
+					<motion.div
+						key="mode-toggle"
+						className="fixed bottom-5 right-5 bg-blue-400 flex justify-center items-center w-[65px] h-[65px] rounded-full z-20 cursor-pointer"
+						initial={{x: '100%', opacity: 0}}
+						animate={{x: 0, opacity: 1}}
+						exit={{x: '100%', opacity: 0}}
+						transition={{type: 'spring', stiffness: 100, damping: 15}}
+					>
+						<ModeToggle />
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</Layout>
 	);
 }

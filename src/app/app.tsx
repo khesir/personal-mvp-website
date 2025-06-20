@@ -11,6 +11,7 @@ import {BlogPage} from './module/blogs/blogPage';
 import Homepage from './module/home/homePage';
 import {ProgressPage} from './module/progress/progress';
 import {ProjectPage} from './module/projects/projectPage';
+import {ExperiencePage} from './module/experiences/experiencePage';
 
 export default function App() {
 	return (
@@ -24,6 +25,7 @@ export default function App() {
 					<Route path="projects" element={<ProjectPage />} />
 					<Route index element={<Homepage />} />
 					<Route path="services" element={<ServicePage />} />
+					<Route path="experiences" element={<ExperiencePage />} />
 					<Route path="blogs/view/:title" element={<ReadPage name="blogs" />} />
 					<Route
 						path="projects/view/:title"

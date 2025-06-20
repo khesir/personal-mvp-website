@@ -7,12 +7,6 @@ export const fetchProjects = async () => {
 	return res.data;
 };
 export const fetchProjectsByID = async (id: string) => {
-	try {
-		const res = await axios.get(
-			`${import.meta.env.VITE_API_URL}/projects/${id}`,
-		);
-		return res.data.result;
-	} catch (e) {
-		throw e;
-	}
+	const res = await axios.get(`${import.meta.env.VITE_API_URL}/projects/${id}`);
+	return res.data.result;
 };

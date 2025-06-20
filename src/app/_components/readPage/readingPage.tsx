@@ -15,6 +15,10 @@ import {Skeleton} from '@/components/ui/skeleton';
 import {Tweet} from 'react-twitter-widgets';
 import {fetchProjectsByID} from '@/app/api/projects';
 import {toast} from 'sonner';
+import {fetchBlogsByID} from '@/app/api/blogs';
+import rehypeSanitize from 'rehype-sanitize';
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
+import {xonokai as Xonokai} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface ReadpageProps {
 	name: string;
@@ -49,6 +53,7 @@ export function ReadPage({name}: ReadpageProps) {
 						response = await fetchProjectsByID(id);
 						break;
 					case 'blogs':
+						response = await fetchBlogsByID(id);
 						break;
 				}
 				if (response === null) return;
@@ -69,7 +74,7 @@ export function ReadPage({name}: ReadpageProps) {
 		return <div className="font-bold text-3xl dark:text-white">{error}</div>;
 	}
 
-	if (!data || !markdown || loading) {
+	if (!data || (!markdown && loading)) {
 		const skeletons = generateRandomSkeletons(10); // Change the count to your desired number of skeletons
 		return (
 			<div className="flex flex-col gap-3">
@@ -117,67 +122,23 @@ export function ReadPage({name}: ReadpageProps) {
 					</div>
 				</div>
 				<div className="prose dark:prose-invert prose-gray max-w-full flex flex-col">
-					<ReactMarkdown
-						className="w-full"
-						rehypePlugins={[rehypeRaw]} // Enable raw HTML rendering
-						remarkPlugins={[remarkGfm]} // Enable GitHub-flavored markdown features
-						components={{
-							a: ({href, children}) => {
-								// Check if the link text is 'video' and the link is a video URL
-								if (isVideoLink(href)) {
-									return href ? <VideoComponent src={href} /> : null;
-								}
-								if (isTweetLink(href)) {
-									const tweetId = href ? getTweetId(href) : null;
-									return tweetId ? (
-										<div className="w-full mx-auto">
-											<Tweet tweetId={tweetId} />
-										</div>
-									) : null;
-								}
-								// Otherwise, return a normal link
-								return (
-									<a href={href} target="_blank" rel="noopener noreferrer">
-										{children}
-									</a>
-								);
-							},
-							img: ({src, alt}) => {
-								return (
-									<div className="w-full h-[400px] overflow-hidden flex items-center justify-center">
-										<img
-											src={src}
-											alt={alt}
-											style={{
-												maxWidth: '100%', // Allow the image to be as wide as the container
-												maxHeight: '100%', // Allow the image to be as tall as the container
-												objectFit: 'contain', // Maintain aspect ratio
-											}}
-											className="rounded-lg shadow-md" // Additional styling
-										/>
-									</div>
-								);
-							},
-						}}
-					>
-						{markdown}
-					</ReactMarkdown>
+					<MarkDownComponent markdown={markdown} />
 				</div>
 			</div>
 		</>
 	);
 }
 
-const isTweetLink = (url: string | string[] | undefined) => {
+export const isTweetLink = (url: string | string[] | undefined) => {
 	return typeof url === 'string' && url.includes('x.com/khesirr/status/');
 };
 
-const getTweetId = (url: string) => {
+export const getTweetId = (url: string) => {
 	const tweetIdMatch = url.match(/status\/(\d+)/);
 	return tweetIdMatch ? tweetIdMatch[1] : null;
 };
 
-const isVideoLink = (url: string | string[] | undefined) => {
+export const isVideoLink = (url: string | string[] | undefined) => {
 	const videoExtensions = /\.(mp4|m4p|webm|ogv|mov)(\?.*)?$/i;
 
 	return (
@@ -188,7 +149,7 @@ const isVideoLink = (url: string | string[] | undefined) => {
 	); // Checks for video file extensions
 };
 
-const VideoComponent = ({src}: {src: string}) => {
+export const VideoComponent = ({src}: {src: string}) => {
 	// Check if the source is a video file
 	if (src.match(/\.(mp4|m4p|webm|ogv|mov)(\?.*)?$/i)) {
 		return (
@@ -218,16 +179,99 @@ const VideoComponent = ({src}: {src: string}) => {
 		</div>
 	);
 };
-function getId(url: string) {
+export function getId(url: string) {
 	const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
 	const match = url.match(regExp);
 
 	return match && match[2].length === 11 ? match[2] : null;
 }
 
-const generateRandomSkeletons = (count: number) => {
+export const generateRandomSkeletons = (count: number) => {
 	return Array.from({length: count}, () => ({
 		width: Math.floor(Math.random() * 600) + 100, // Random width between 100px and 700px
 		height: Math.floor(Math.random() * 100) + 20, // Random height between 20px and 120px
 	}));
 };
+export function MarkDownComponent({markdown}: {markdown: string}) {
+	return (
+		<ReactMarkdown
+			className="w-full prose dark:prose-invert max-w-none" // Tailwind + better styling
+			rehypePlugins={[rehypeRaw, rehypeSanitize]} // Enable raw HTML rendering
+			remarkPlugins={[remarkGfm]} // Enable GitHub-flavored markdown features
+			components={{
+				h1: ({children}) => (
+					<h1 className="text-3xl font-bold my-4">{children}</h1>
+				),
+				h2: ({children}) => (
+					<h2 className="text-2xl font-semibold my-3">{children}</h2>
+				),
+				h3: ({children}) => (
+					<h3 className="text-xl font-semibold my-2">{children}</h3>
+				),
+				p: ({children}) => <p className="my-2 leading-relaxed">{children}</p>,
+				a: ({href, children}) => {
+					// Check if the link text is 'video' and the link is a video URL
+					if (isVideoLink(href)) {
+						return href ? <VideoComponent src={href} /> : null;
+					}
+					if (isTweetLink(href)) {
+						const tweetId = href ? getTweetId(href) : null;
+						return tweetId ? (
+							<div className="w-full mx-auto">
+								<Tweet tweetId={tweetId} />
+							</div>
+						) : null;
+					}
+					// Otherwise, return a normal link
+					return (
+						<a href={href} target="_blank" rel="noopener noreferrer">
+							{children}
+						</a>
+					);
+				},
+				img: ({src, alt}) => {
+					return (
+						<div className="w-full h-[400px] overflow-hidden flex items-center justify-center">
+							<img
+								src={src}
+								alt={alt}
+								style={{
+									maxWidth: '100%', // Allow the image to be as wide as the container
+									maxHeight: '100%', // Allow the image to be as tall as the container
+									objectFit: 'contain', // Maintain aspect ratio
+								}}
+								className="rounded-lg shadow-md" // Additional styling
+							/>
+						</div>
+					);
+				},
+				code({
+					node,
+					inline,
+					className,
+					children,
+					...props
+				}: {
+					node?: any;
+					inline?: boolean;
+					className?: string;
+					children?: React.ReactNode;
+					[key: string]: any;
+				}) {
+					const match = /language-(\w+)/.exec(className || '');
+					return !inline && match ? (
+						<SyntaxHighlighter style={Xonokai} language={match[1]} {...props}>
+							{String(children).replace(/\n$/, '')}
+						</SyntaxHighlighter>
+					) : (
+						<code className={className} {...props}>
+							{children}
+						</code>
+					);
+				},
+			}}
+		>
+			{markdown}
+		</ReactMarkdown>
+	);
+}
