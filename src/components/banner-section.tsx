@@ -2,6 +2,7 @@ import {Background} from './background';
 import '../css/style.css';
 import {usePathname} from '@/hooks/use-pathname-store';
 import {ModeToggle} from './providers/mode-toggle';
+import {AboutMeCard} from './card/about-me-card';
 
 export function Banner() {
 	const {pathname} = usePathname();
@@ -10,7 +11,7 @@ export function Banner() {
 		<div className="relative w-full h-full">
 			{pathname === '/' && (
 				<>
-					{/* <AboutMeCard /> */}
+					<AboutMeCard />
 					<div className="absolute bottom-3 left-3 bg-blue-400 flex justify-center items-center w-[65px] h-[65px] rounded-full z-20 cursor-pointer">
 						<ModeToggle />
 					</div>
