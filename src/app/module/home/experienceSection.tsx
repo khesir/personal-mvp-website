@@ -18,7 +18,7 @@ const containerVariants = {
 	initial: {},
 	animate: {
 		transition: {
-			staggerChildren: 0.01,
+			staggerChildren: 0.3,
 		},
 	},
 };
@@ -100,10 +100,10 @@ export function ExperienceSection({
 					</div>
 				)}
 				<div className="flex flex-col gap-3 3xl:mx-28">
-					<Skeleton className="h-[150px] w-full rounded-3xl bg-slate-500 dark:bg-slate-900" />
-					<Skeleton className="h-[150px] w-full rounded-3xl bg-slate-500 dark:bg-slate-900" />
-					<Skeleton className="h-[150px] w-full rounded-3xl bg-slate-500 dark:bg-slate-900" />
-					<Skeleton className="h-[150px] w-full rounded-3xl bg-slate-500 dark:bg-slate-900" />
+					<Skeleton className="h-[150px] shadow-lg w-full rounded-3xl bg-slate-500 dark:bg-slate-900" />
+					<Skeleton className="h-[150px] shadow-lg w-full rounded-3xl bg-slate-500 dark:bg-slate-900" />
+					<Skeleton className="h-[150px] shadow-lg w-full rounded-3xl bg-slate-500 dark:bg-slate-900" />
+					<Skeleton className="h-[150px] shadow-lg w-full rounded-3xl bg-slate-500 dark:bg-slate-900" />
 				</div>
 			</>
 		);
@@ -138,7 +138,7 @@ export function ExperienceSection({
 						key={i}
 						variants={cardVariants}
 						onClick={() => openDialog(i)}
-						className="group h-[130px] w-full duration-200 hover:border-slate-500 dark:bg-slate-900 border dark:border-none relative flex rounded-3xl items-start justify-start overflow-hidden dark:border-gray-700 cursor-pointer"
+						className="group shadow-lg h-[130px] w-full duration-200 dark:hover:border-white hover:border-slate-500 dark:bg-slate-900 border dark:border-none relative flex rounded-3xl items-start justify-start overflow-hidden  cursor-pointer"
 					>
 						{/* Image */}
 						<div className="relative overflow-hidden rounded-3xl h-[100%] w-[130px]">
@@ -183,11 +183,16 @@ export function ExperienceSection({
 							<div className="font-semibold text-sm flex items-center">
 								<div className="text-xs mr-2">Highlighted Skill:</div>
 								<div className="flex gap-1 flex-wrap">
-									{d.highlightSkills.map((data: any, index: any) => (
-										<Badge key={index}>
-											{data.properties['Name'].title[0].plain_text}
-										</Badge>
-									))}
+									{d.highlightSkills
+										.slice(0, 3)
+										.map((data: any, index: any) => (
+											<Badge key={index}>
+												{data.properties['Name'].title[0].plain_text}
+											</Badge>
+										))}
+									{d.highlightSkills.length > 3 && (
+										<Badge>+{d.highlightSkills.length - 3} more</Badge>
+									)}
 								</div>
 							</div>
 						</div>

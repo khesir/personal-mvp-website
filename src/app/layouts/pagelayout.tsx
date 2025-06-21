@@ -37,9 +37,9 @@ export function BaseLayout() {
 					<motion.div
 						key="mode-toggle"
 						className="fixed bottom-5 right-5 bg-blue-400 flex justify-center items-center w-[65px] h-[65px] rounded-full z-20 cursor-pointer"
-						initial={{x: '100%', opacity: 0}}
-						animate={{x: 0, opacity: 1}}
-						exit={{x: '100%', opacity: 0}}
+						initial={{x: '100%', opacity: 0, rotate: 0}}
+						animate={{x: 0, opacity: 1, rotate: -360}}
+						exit={{x: '100%', opacity: 0, rotate: 360}}
 						transition={{type: 'spring', stiffness: 100, damping: 15}}
 					>
 						<ModeToggle />
