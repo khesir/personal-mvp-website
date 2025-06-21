@@ -11,6 +11,7 @@ import {Label} from '@/components/ui/label';
 import {toast} from 'sonner';
 import {ExperienceSection} from './experienceSection';
 import {Icon} from '@iconify/react';
+import {motion} from 'framer-motion';
 
 // Iconify icon names for the respective languages
 const csharpIcon = 'devicon:csharp';
@@ -101,7 +102,13 @@ export default function Homepage() {
 	};
 	return (
 		<div className="dark:text-white flex flex-col gap-3 mt-5">
-			<div className=" sm:border rounded-3xl w-full flex flex-col md:flex-row items-center justify-center overflow-hidden dark:bg-slate-800 dark:border-gray-700 ">
+			<motion.div
+				className="shadow-lg sm:border rounded-3xl w-full flex flex-col md:flex-row items-center justify-center overflow-hidden dark:bg-slate-800 dark:border-gray-700"
+				initial={{y: -100, opacity: 0}}
+				whileInView={{y: 0, opacity: 1}}
+				viewport={{once: true, amount: 0.3}}
+				transition={{type: 'spring', stiffness: 60, damping: 15}}
+			>
 				<div className="w-[250px] h-[250px]">
 					<div className="w-full overflow-hidden rounded-3xl border">
 						<img
@@ -125,15 +132,6 @@ export default function Homepage() {
 					</div>
 
 					<div className="space-x-3 md:flex mt-3 hidden">
-						{/* <Button
-							variant={'outline'}
-							onClick={() => {
-								const el = document.getElementById('contact');
-								if (el) el.scrollIntoView({behavior: 'smooth'});
-							}}
-						>
-							Contact Me
-						</Button> */}
 						<Icon icon={typescriptIcon} className="w-8 h-8" />
 						<Icon icon={pythonIcon} className="w-8 h-8" />
 						<Icon icon={csharpIcon} className="w-8 h-8" />
@@ -141,23 +139,33 @@ export default function Homepage() {
 						<Icon icon={luaIcon} className="w-8 h-8" />
 					</div>
 				</CardContent>
-			</div>
+			</motion.div>
 			{/* <iframe
 				frameBorder="0"
 				className="w-full h-[180px] 3xl:h-[180px] rounded-3xl"
 				src="https://git-graph.vercel.app/embed/khesir?showColorLegend=false&showWeekdayLabels=false&showMonthLabels=true&showTotalCount=false&blockMargin=2&blockRadius=5&blockSize=17&fontSize=15&weekStart=6&year=2025"
 			></iframe> */}
-			<Card className="flex justify-between items-center p-5  rounded-3xl mb-5 dark:bg-slate-800 dark:border-gray-700">
-				Interested more about me?
-				<Button size={'sm'} onClick={() => navigate('about')}>
+			<motion.div
+				className="shadow-lg border flex justify-between items-center p-5 rounded-3xl mb-5 dark:bg-slate-800 dark:border-gray-700"
+				initial={{y: 100, opacity: 0}}
+				whileInView={{y: 0, opacity: 1}}
+				viewport={{once: true, amount: 0.3}}
+				transition={{type: 'spring', stiffness: 60, damping: 15}}
+			>
+				<span className="font-semibold">Interested more about me?</span>
+				<Button size="sm" onClick={() => navigate('about')}>
 					Click here
 				</Button>
-			</Card>
+			</motion.div>
 			<TopProjects />
 			<ExperienceSection pageSize={4} displayHeader={true} />
-			<div
+			<motion.div
 				id="contact"
-				className="sm:border rounded-3xl w-full flex flex-col md:flex-row items-center justify-center overflow-hidden dark:bg-slate-800 dark:border-gray-700 p-5 "
+				className="shadow-lg sm:border rounded-3xl w-full flex flex-col md:flex-row items-center justify-center overflow-hidden dark:bg-slate-800 dark:border-gray-700 p-5"
+				initial={{y: 100, opacity: 0}}
+				whileInView={{y: 0, opacity: 1}}
+				viewport={{once: true, amount: 0.3}}
+				transition={{type: 'spring', stiffness: 60, damping: 15}}
 			>
 				<div>
 					<div className="text-xl font-semibold flex justify-center">
@@ -204,7 +212,7 @@ export default function Homepage() {
 						</Card>
 					</div>
 				</div>
-			</div>
+			</motion.div>
 			<div className="text-xs flex justify-center gap-5">
 				<a href="https://github.com/khesir">Github</a>
 				<a href="https://x.com/khesirr">Twitter</a>

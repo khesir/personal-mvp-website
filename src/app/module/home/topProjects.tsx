@@ -14,7 +14,7 @@ const containerVariants = {
 	initial: {},
 	animate: {
 		transition: {
-			staggerChildren: 0.01,
+			staggerChildren: 0.3,
 		},
 	},
 };
@@ -93,12 +93,12 @@ export function TopProjects() {
 						className="my-masonry-grid"
 						columnClassName="my-masonry-grid_column"
 					>
-						<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
-						<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
-						<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
-						<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
-						<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
-						<Skeleton className="h-[300px] w-[350px] bg-slate-500 dark:bg-slate-900" />
+						<Skeleton className="h-[300px] shadow-lg  w-[350px] bg-slate-500 dark:bg-slate-900" />
+						<Skeleton className="h-[300px] shadow-lg w-[350px] bg-slate-500 dark:bg-slate-900" />
+						<Skeleton className="h-[300px] shadow-lg w-[350px] bg-slate-500 dark:bg-slate-900" />
+						<Skeleton className="h-[300px] shadow-lg w-[350px] bg-slate-500 dark:bg-slate-900" />
+						<Skeleton className="h-[300px] shadow-lg w-[350px] bg-slate-500 dark:bg-slate-900" />
+						<Skeleton className="h-[300px] shadow-lg w-[350px] bg-slate-500 dark:bg-slate-900" />
 					</Masonry>
 				</div>
 			</>
@@ -139,7 +139,7 @@ export function TopProjects() {
 							<motion.div
 								key={i}
 								variants={cardVariants}
-								className="w-full dark:bg-slate-900 border dark:border-none relative flex flex-col rounded-3xl items-start justify-between overflow-hidden dark:border-gray-700 cursor-pointer"
+								className="w-full shadow-lg hover:border-slate-500 dark:hover:border-white dark:bg-slate-900 border dark:border-none relative flex flex-col rounded-3xl items-start justify-between overflow-hidden dark:border-gray-700 cursor-pointer"
 							>
 								<div
 									className="w-full overflow-hidden rounded-3xl h-[200px] border-transparent"
